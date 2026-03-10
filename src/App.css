@@ -3139,17 +3139,18 @@ label {
   grid-column-gap: 21px;
   grid-row-gap: 21px;
   display: flex;
+  padding-bottom: 10px; /* Added bottom padding under social media bar */
 }
 
 .bottom-content {
   flex-flow: row;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 300px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   display: flex;
   position: relative;
 }
@@ -3182,6 +3183,7 @@ label {
 .section-footer {
   position: relative;
   overflow: hidden;
+  padding-bottom: 40px;
 }
 
 .page-wrapper {
