@@ -24,10 +24,53 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  background: #000000 !important;
+}
+/* Mobile fixes */
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .hero_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    min-height: 60vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .hero-bg-image-wrap {
+    width: 100vw;
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-bg-image {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+    max-width: 100vw;
+    min-width: 100vw;
+  }
+  .hero-logo {
+    width: 120px;
+    height: auto;
+    margin-top: -30px;
+    z-index: 2;
+    position: relative;
+    display: block;
+  }
+}
 }
 
 h1 {
