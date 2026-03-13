@@ -1,5 +1,5 @@
-import heroImage from '../../assets/_DSF9736.jpg'
-import logo from '../../assets/logo.svg'
+import heroImage from '../../assets/heroimage/_DSF9736.jpg'
+import logo from '../../assets/logo/logo.svg'
 import { NAV_ITEMS, type NavItem } from '../../constants/navigation'
 
 type HeroSectionProps = {

@@ -3,15 +3,19 @@ import HomeSections from './components/home/HomeSections'
 import FooterSection from './components/layout/FooterSection'
 import HeroSection from './components/layout/HeroSection'
 import { type NavItem } from './constants/navigation'
-import EpkPage from './pages/EpkPage'
+import PressKitPage from './pages/PressKitPage'
 import MusicPage from './pages/MusicPage'
+import SongPageA from './pages/SongPageA'
+import SongPageB from './pages/SongPageB'
+import SongPageC from './pages/SongPageC'
 import './App.css'
 
 function App() {
   const pathname = window.location.pathname.toLowerCase()
   const isMusicPage = pathname.startsWith('/music')
-  const isEpkPage = pathname.startsWith('/epk')
-  const isHomePage = !isMusicPage && !isEpkPage
+  const isPressKitPage = pathname.startsWith('/press')
+  const isHomePage = !isMusicPage && !isPressKitPage
+  const musicSubpage = pathname.replace(/^\/music\/?/, '')
 
   useEffect(() => {
     if (!isHomePage) {
@@ -71,19 +75,37 @@ function App() {
   }
 
   if (isMusicPage) {
+    const musicPageContent = (() => {
+      if (musicSubpage === 'a') {
+        return <SongPageA />
+      }
+
+      if (musicSubpage === 'b') {
+        return <SongPageB />
+      }
+
+      if (musicSubpage === 'c') {
+        return <SongPageC />
+      }
+
+      return <MusicPage />
+    })()
+
     return (
       <div className="page-wrapper">
         <HeroSection activeNavId="music" getNavHref={getNavHref} />
-        <MusicPage />
+        {musicPageContent}
+        <FooterSection />
       </div>
     )
   }
 
-  if (isEpkPage) {
+  if (isPressKitPage) {
     return (
       <div className="page-wrapper">
         <HeroSection getNavHref={getNavHref} />
-        <EpkPage />
+        <PressKitPage />
+        <FooterSection />
       </div>
     )
   }
