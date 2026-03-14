@@ -1,25 +1,31 @@
+import SongCoverCologne from '../assets/coverimage/cologne.jpg'
+import SongCoverKrakensbane from '../assets/coverimage/krakensbane.jpg'
+import SongCoverXXII from '../assets/coverimage/xxii.jpg'
+
+const songs = [
+  { title: 'XXII', href: '/music/xxii', cover: SongCoverXXII },
+  { title: 'COLOGNE', href: '/music/cologne', cover: SongCoverCologne },
+  { title: 'KRAKENSBANE', href: '/music/krakensbane', cover: SongCoverKrakensbane },
+]
+
 export default function MusicPage() {
   return (
-    <section className="section home-anchor-section music-page-section">
+    <section id="music" className="section home-anchor-section music-page-section">
       <div className="page-padding">
         <div className="container padding-top">
           <h1 className="anchor-title">music</h1>
-          <p className="anchor-copy"></p>
 
-          <div className="music-song-links" aria-label="Song pages">
-            <a className="music-song-link" href="/music/a">A</a>
-            <a className="music-song-link" href="/music/b">B</a>
-            <a className="music-song-link" href="/music/c">C</a>
-          </div>
-
-          <div className="embed-frame-wrap">
-            <iframe
-              className="spotify-embed"
-              src="https://open.spotify.com/embed/artist/192tykkkWwzLE5PiX3quDp?utm_source=generator"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="Wendigo music on Spotify"
-            />
+          <div className="music-song-gallery" aria-label="Song pages">
+            {songs.map((song) => (
+              <a key={song.href} className="music-song-card" href={song.href} aria-label={song.title}>
+                <img
+                  className="music-song-cover"
+                  src={song.cover}
+                  alt={`${song.title} cover art`}
+                  loading="lazy"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </div>

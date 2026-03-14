@@ -1,0 +1,583 @@
+/*
+  Site custom styles
+  Keep project-specific styling here.
+  Legacy template styles live in src/styles/template.webflow.css.
+*/
+
+:root {
+  --site-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --site-heading-size: clamp(2rem, 6vw, 4rem);
+  --site-heading-weight: 500;
+  --site-copy-size: clamp(1rem, 1.8vw, 1.2rem);
+  --site-copy-line-height: 1.6;
+  --site-copy-weight: 300;
+  --site-copy-color: #ffffffd1;
+  --site-hover-accent: #ff5050;
+  --site-hover-accent-contrast: #111;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.hero_main {
+  position: relative;
+}
+
+.hero-section .hero-navbar {
+  position: absolute;
+  right: 2rem;
+  left: auto;
+  bottom: 2rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.2vw, 2.2rem);
+  padding: 0.2rem 0.1rem;
+}
+
+.hero-nav-link {
+  color: #fff;
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  text-decoration: none;
+  opacity: 0.9;
+  text-shadow: 0 1px 12px #000;
+  transition: opacity 180ms ease, color 180ms ease;
+}
+
+.hero-nav-link:hover,
+.hero-nav-link:focus-visible {
+  opacity: 1;
+  color: var(--site-hover-accent);
+}
+
+.hero-nav-link.is-active {
+  opacity: 1;
+}
+
+.anchor-title {
+  margin: 0;
+  color: #fff;
+  font-family: var(--site-font-family);
+  font-size: var(--site-heading-size);
+  font-weight: var(--site-heading-weight);
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+.anchor-copy {
+  max-width: 44rem;
+  margin: 0.9rem 0 0;
+  color: var(--site-copy-color);
+  font-family: var(--site-font-family);
+  font-size: var(--site-copy-size);
+  line-height: var(--site-copy-line-height);
+  font-weight: var(--site-copy-weight);
+}
+
+.embed-frame-wrap {
+  width: min(900px, 100%);
+  margin-top: 1.2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 16px 40px #0000004d;
+}
+
+.spotify-embed {
+  display: block;
+  width: 100%;
+  min-height: 352px;
+  border: 0;
+}
+
+.spotify-embed-compact {
+  min-height: 152px;
+}
+
+.youtube-embed-wrap {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.youtube-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.music-page-section {
+  min-height: 58vh;
+}
+
+.music-page-section .container.padding-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.music-page-section .embed-frame-wrap {
+  width: min(900px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.music-song-gallery {
+  width: min(980px, 100%);
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.7rem, 2vw, 1.15rem);
+}
+
+.music-song-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #ffffff6b;
+  color: #fff;
+  text-decoration: none;
+  text-transform: lowercase;
+  background: #111;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.music-song-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.song-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid #ffffff6b;
+  color: #fff;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.music-song-card:hover,
+.music-song-card:focus-visible,
+.song-back-link:hover,
+.song-back-link:focus-visible {
+  background: var(--site-hover-accent);
+  color: var(--site-hover-accent-contrast);
+  border-color: var(--site-hover-accent);
+}
+
+.music-song-card:hover,
+.music-song-card:focus-visible {
+  transform: translateY(-2px);
+}
+
+.song-page-title-amador {
+  font-family: "amador", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: clamp(2.5rem, 8vw, 4.8rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+.song-page-media-stack {
+  width: min(920px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.song-page-spotify-wrap,
+.song-page-youtube-wrap,
+.song-page-bandcamp-wrap {
+  width: 100%;
+}
+
+.song-bandcamp-embed {
+  display: block;
+  width: 100%;
+  height: 120px;
+  border: 0;
+}
+
+.song-page-section .song-back-link {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.75rem 1.35rem;
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+  font-size: clamp(0.8rem, 1.7vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.song-page-intro-copy {
+  width: min(720px, 100%);
+  margin: 0 auto clamp(5rem, 14vw, 8rem);
+  color: var(--site-copy-color);
+  font-family: var(--site-font-family);
+  font-size: var(--site-copy-size);
+  line-height: var(--site-copy-line-height);
+  font-weight: var(--site-copy-weight);
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.song-page-section .song-back-link:hover,
+.song-page-section .song-back-link:focus-visible {
+  background: var(--site-hover-accent);
+  color: var(--site-hover-accent-contrast);
+  border-color: var(--site-hover-accent);
+}
+
+.press-kit-page-section .container.padding-top {
+  align-items: stretch;
+  text-align: left;
+  gap: clamp(1.25rem, 2.8vw, 2rem);
+}
+
+.press-kit-header,
+.press-kit-copy,
+.press-kit-live-strip,
+.press-kit-gallery {
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.press-kit-header {
+  text-align: center;
+}
+
+.press-kit-copy {
+  color: var(--site-copy-color);
+  font-family: var(--site-font-family);
+  font-size: var(--site-copy-size);
+  line-height: var(--site-copy-line-height);
+  font-weight: var(--site-copy-weight);
+  text-align: justify;
+}
+
+.press-kit-live-strip,
+.press-kit-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.press-kit-live-strip-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.press-kit-gallery-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.home-main-sections {
+  --home-section-gap: clamp(3.25rem, 8vw, 6rem);
+  --home-emphasis-gap-multiplier: 5;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--home-section-gap);
+  gap: var(--home-section-gap);
+}
+
+.home-main-sections .section {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.home-main-sections #live.home-anchor-section,
+.home-main-sections #merch.home-anchor-section,
+.home-main-sections #news.home-anchor-section {
+  margin-top: calc(var(--home-section-gap) * var(--home-emphasis-gap-multiplier));
+}
+
+.home-main-sections .container.padding-top {
+  padding-top: 0 !important;
+}
+
+.new-song-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+  min-height: clamp(760px, 78vw, 1120px);
+  height: auto;
+  padding: clamp(1.35rem, 3.2vw, 2.1rem) 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #090909;
+}
+
+.new-song-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(0.92) contrast(1.03);
+}
+
+.new-song-title-main {
+  display: block;
+  font-family: "amador", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: clamp(3.8rem, 15vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.84;
+  letter-spacing: 0 !important;
+}
+
+.new-song-embed-wrap,
+.new-song-youtube-wrap {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  margin-top: 0;
+  border: 1px solid #ffffff2b;
+  background: #101010d1;
+}
+
+.new-song-embed-wrap {
+  width: min(520px, 90%);
+}
+
+.new-song-youtube-wrap {
+  width: min(860px, 90%);
+}
+
+.news-section .container.padding-top {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  align-items: stretch !important;
+}
+
+.news-instagram-wrap {
+  width: min(540px, 100%);
+  margin: 1rem auto 0;
+  border: 1px solid #ffffff26;
+  background: #0c0c0c;
+}
+
+.news-instagram-embed {
+  display: block;
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+}
+
+.hero-logo-link {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  width: min(200px, 62vw);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo-link .hero-logo {
+  display: block;
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  z-index: 1 !important;
+  transition: opacity 180ms ease;
+}
+
+.hero-logo-link:hover .hero-logo,
+.hero-logo-link:focus-visible .hero-logo {
+  opacity: 0;
+}
+
+.hero-logo-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--site-hover-accent);
+  -webkit-mask: url("../assets/logo/logo.svg") center / contain no-repeat;
+  mask: url("../assets/logo/logo.svg") center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.hero-logo-link:hover::after,
+.hero-logo-link:focus-visible::after {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .music-song-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero_main {
+    height: 68vh;
+    min-height: 360px;
+    padding: 0;
+  }
+
+  .hero-logo {
+    max-width: 90%;
+    max-height: 60%;
+  }
+
+  .hero-navbar {
+    position: static;
+    width: 100%;
+    max-width: none;
+    justify-content: space-around;
+    gap: 1rem;
+    transform: none;
+    padding: 1rem 1.2rem 0.2rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .hero-nav-link {
+    font-size: clamp(1rem, 3.2vw, 1.2rem);
+  }
+
+  .press-kit-gallery,
+  .press-kit-live-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .spotify-embed {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero_main {
+    height: 62vh !important;
+    min-height: 340px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-bg-image-wrap {
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute !important;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-bg-image {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .hero-logo {
+    max-width: 62vw !important;
+    margin-top: 0 !important;
+    height: auto !important;
+    z-index: 4;
+    position: relative;
+    transform: none;
+    display: block;
+  }
+
+  .hero-navbar {
+    position: static !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    justify-content: space-around !important;
+    gap: clamp(0.8rem, 3.5vw, 1.5rem) !important;
+    padding: 0.9rem 1rem 0.35rem !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  .hero-nav-link {
+    font-size: clamp(0.95rem, 4vw, 1.15rem) !important;
+  }
+
+  .song-page-media-stack {
+    gap: 0.8rem;
+  }
+
+  .song-page-section .song-back-link {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero_main {
+    height: 62vh;
+    min-height: 320px;
+  }
+
+  .news-instagram-embed {
+    min-height: 500px;
+  }
+}

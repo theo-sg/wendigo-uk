@@ -5,9 +5,11 @@ import HeroSection from './components/layout/HeroSection'
 import { type NavItem } from './constants/navigation'
 import PressKitPage from './pages/PressKitPage'
 import MusicPage from './pages/MusicPage'
-import SongPageA from './pages/SongPageA'
-import SongPageB from './pages/SongPageB'
-import SongPageC from './pages/SongPageC'
+
+import SongPageXXII from './pages/SongPageXXII'
+import SongPageCologne from './pages/SongPageCologne'
+import SongPageKrakensbane from './pages/SongPageKrakensbane'
+
 import './App.css'
 
 function App() {
@@ -75,21 +77,27 @@ function App() {
   }
 
   if (isMusicPage) {
+    const isSongPage = ['xxii', 'cologne', 'krakensbane'].includes(musicSubpage)
+
     const musicPageContent = (() => {
-      if (musicSubpage === 'a') {
-        return <SongPageA />
+      if (musicSubpage === 'xxii') {
+        return <SongPageXXII />
       }
 
-      if (musicSubpage === 'b') {
-        return <SongPageB />
+      if (musicSubpage === 'cologne') {
+        return <SongPageCologne />
       }
 
-      if (musicSubpage === 'c') {
-        return <SongPageC />
+      if (musicSubpage === 'krakensbane') {
+        return <SongPageKrakensbane />
       }
 
       return <MusicPage />
     })()
+
+    if (isSongPage) {
+      return <div className="page-wrapper">{musicPageContent}</div>
+    }
 
     return (
       <div className="page-wrapper">
