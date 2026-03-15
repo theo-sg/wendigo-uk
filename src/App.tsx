@@ -97,7 +97,12 @@ function App() {
     })()
 
     if (isSongPage) {
-      return <div className="page-wrapper">{musicPageContent}</div>
+      return (
+        <div className="page-wrapper">
+          {musicPageContent}
+          <FooterSection />
+        </div>
+      )
     }
 
     return (
