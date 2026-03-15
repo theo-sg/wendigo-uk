@@ -1,3 +1,5 @@
+import { EXTERNAL_LINKS } from '../constants/links'
+
 export default function SongPageKrakensbane() {
   return (
     <section className="section home-anchor-section music-page-section song-page-section">
@@ -11,7 +13,7 @@ export default function SongPageKrakensbane() {
             <div className="embed-frame-wrap song-page-spotify-wrap">
               <iframe
                 className="spotify-embed spotify-embed-compact"
-                src="https://open.spotify.com/embed/track/2D0VTDX74gfaY4SJ8Txal3?utm_source=generator&theme=0"
+                src={EXTERNAL_LINKS.tracks.krakensbane.spotifyEmbed}
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
                 title="Krakensbane on Spotify"
@@ -22,7 +24,7 @@ export default function SongPageKrakensbane() {
               <div className="youtube-embed-wrap">
                 <iframe
                   className="youtube-embed"
-                  src="https://www.youtube.com/embed/6UwWjaHzBnw"
+                  src={EXTERNAL_LINKS.tracks.krakensbane.youtubeEmbed}
                   title="Krakensbane video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
@@ -35,7 +37,7 @@ export default function SongPageKrakensbane() {
               <div className="youtube-embed-wrap">
                 <iframe
                   className="youtube-embed"
-                  src="https://www.youtube.com/embed/7m4SaaN7rzk"
+                  src={EXTERNAL_LINKS.tracks.krakensbane.youtubeLiveEmbed}
                   title="Krakensbane video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
@@ -47,11 +49,11 @@ export default function SongPageKrakensbane() {
             <div className="embed-frame-wrap song-page-bandcamp-wrap">
               <iframe
                 className="song-bandcamp-embed"
-                src="https://bandcamp.com/EmbeddedPlayer/v=2/track=4285040030/size=large/bgcol=0b0b0b/linkcol=ffffff/tracklist=false/artwork=small/"
+                src={EXTERNAL_LINKS.tracks.krakensbane.bandcampEmbed}
                 title="Krakensbane on Bandcamp"
                 seamless
               >
-                <a href="https://wendigo-uk.bandcamp.com/track/krakensbane">Krakensbane by wendigo</a>
+                <a href={EXTERNAL_LINKS.tracks.krakensbane.bandcamp}>Krakensbane by wendigo</a>
               </iframe>
             </div>
           </div>

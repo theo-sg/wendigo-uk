@@ -1,3 +1,5 @@
+import { EXTERNAL_LINKS } from '../../constants/links'
+
 export default function NewsSection() {
   return (
     <section id="news" className="section home-anchor-section news-section">
@@ -12,7 +14,7 @@ export default function NewsSection() {
             <div className="news-instagram-wrap">
               <iframe
                 className="news-instagram-embed"
-                src="https://www.instagram.com/p/DVtfJwyjWfu/embed"
+                src={EXTERNAL_LINKS.embeds.instagramPost}
                 loading="lazy"
                 allowTransparency={true}
                 allow="encrypted-media"
@@ -30,7 +32,7 @@ export default function NewsSection() {
             <a
               aria-label="Open Voxwave article"
               className="news-blog-image-link"
-              href="https://voxwavemag.com/2026/03/06/a-stare-that-hits-hard-wendigos-music-should-feel-like-a-kubrick-stare-and-they-mean-it/"
+              href={EXTERNAL_LINKS.press.voxwaveArticle}
               rel="noreferrer"
               target="_blank"
             >
@@ -38,12 +40,12 @@ export default function NewsSection() {
                 alt="Voxwave article preview"
                 className="news-blog-preview-image"
                 loading="lazy"
-                src="https://voxwavemag.com/wp-content/uploads/2026/03/captura-de-pantalla-2026-03-04-171343.png"
+                src={EXTERNAL_LINKS.press.voxwaveImage}
               />
             </a>
             <a
               className="news-blog-link"
-              href="https://voxwavemag.com/2026/03/06/a-stare-that-hits-hard-wendigos-music-should-feel-like-a-kubrick-stare-and-they-mean-it/"
+              href={EXTERNAL_LINKS.press.voxwaveArticle}
               rel="noreferrer"
               target="_blank"
             >

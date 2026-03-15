@@ -1,3 +1,5 @@
+import { EXTERNAL_LINKS } from '../constants/links'
+
 export default function SongPageXXII() {
   return (
     <section className="section home-anchor-section music-page-section song-page-section">
@@ -11,7 +13,7 @@ export default function SongPageXXII() {
             <div className="embed-frame-wrap song-page-spotify-wrap">
               <iframe
                 className="spotify-embed spotify-embed-compact"
-                src="https://open.spotify.com/embed/track/6ZFQFPBkSi6qdJTUIaqan0?utm_source=generator&theme=0"
+                src={EXTERNAL_LINKS.tracks.xxii.spotifyEmbed}
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
                 title="XXII on Spotify"
@@ -22,7 +24,7 @@ export default function SongPageXXII() {
               <div className="youtube-embed-wrap">
                 <iframe
                   className="youtube-embed"
-                  src="https://www.youtube.com/embed/VgJuSft0uD0"
+                  src={EXTERNAL_LINKS.tracks.xxii.youtubeEmbed}
                   title="XXII official video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
@@ -34,11 +36,11 @@ export default function SongPageXXII() {
             <div className="embed-frame-wrap song-page-bandcamp-wrap">
               <iframe
                 className="song-bandcamp-embed"
-                src="https://bandcamp.com/EmbeddedPlayer/v=2/track=4149351756/size=large/bgcol=0b0b0b/linkcol=ffffff/tracklist=false/artwork=small/"
+                src={EXTERNAL_LINKS.tracks.xxii.bandcampEmbed}
                 title="XXII on Bandcamp"
                 seamless
               >
-                <a href="https://wendigo-uk.bandcamp.com/track/xxii">XXII by wendigo</a>
+                <a href={EXTERNAL_LINKS.tracks.xxii.bandcamp}>XXII by wendigo</a>
               </iframe>
             </div>
           </div>

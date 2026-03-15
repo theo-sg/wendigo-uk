@@ -4,6 +4,9 @@ import PressKitLiveImage3 from '../assets/liveimage/DSC05537.jpg'
 import PressKitGalleryImage1 from '../assets/heroimage/_DSF0113.jpg'
 import PressKitGalleryImage2 from '../assets/heroimage/_DSF9736.jpg'
 import PressKitGalleryImage3 from '../assets/heroimage/_DSF9786.jpg'
+import { EXTERNAL_LINKS } from '../constants/links'
+
+import PressKitMainImage from '../assets/liveimage/_DSF9775.jpg'
 
 export default function PressKitPage() {
   return (
@@ -14,6 +17,15 @@ export default function PressKitPage() {
             <h1 className="anchor-title">press kit</h1>
           </div>
 
+          <div className="press-kit-main" aria-label="Press kit main image">
+            <img alt="Wendigo press kit main image" className="press-kit-main-image" loading="lazy" src={PressKitMainImage} />
+          </div>
+
+          <p className="press-kit-copy">
+            <b>wendigo</b> is a three piece alternative rock band from london, uk. our self-coined <b>‘di-gaze’</b> sound channels the rawness of grunge and alt rock and the sonic experimentation of shoegaze - pushing both to their absolute limits with a modern approach to production, coupled with energetic live performances. 
+            
+          </p>
+
           <div className="press-kit-live-strip" aria-label="Wendigo live photos">
             <img alt="Wendigo live photo 1" className="press-kit-live-strip-image" loading="lazy" src={PressKitLiveImage1} />
             <img alt="Wendigo live photo 2" className="press-kit-live-strip-image" loading="lazy" src={PressKitLiveImage2} />
@@ -21,9 +33,10 @@ export default function PressKitPage() {
           </div>
 
           <p className="press-kit-copy">
-            we are a three piece alternative rock band from london, uk, who aim to create raw, visceral music, and to match that sincerity with our live performances. our self-coined ‘di-gaze’ sound draws inspiration from bands such as tigercub, cleopatrick, zig mentality and julie.
-            with three singles released, <b><a href="https://open.spotify.com/track/6ZFQFPBkSi6qdJTUIaqan0?si=e3aa641b51df4607">XXII</a></b>, <b><a href="https://open.spotify.com/track/2D0VTDX74gfaY4SJ8Txal3?si=6a76f62a763d49f4">KRAKENSBANE</a></b>, and <b><a href="https://open.spotify.com/track/4Gjr70aFJj9fSkjMiwyO8J?si=8d876aa26a3342e8">COLOGNE</a></b> each hitting over one thousand streams in their first week of release, and an EP releasing this summer, we’re carving our own audiovisual identity through our work.
+            we've built momentum behind our project, with three singles released, <b><a href={EXTERNAL_LINKS.tracks.xxii.spotify}>XXII</a></b>, <b><a href={EXTERNAL_LINKS.tracks.krakensbane.spotify}>KRAKENSBANE</a></b>, and <b><a href={EXTERNAL_LINKS.tracks.cologne.spotify}>COLOGNE</a></b> each hitting over one thousand streams in their first week of release.
+            these releases, as well as two huge headline shows at <b><a href={EXTERNAL_LINKS.instagramPosts.camdenAssembly}>camden assembly</a></b> on 5th march 2026, and <b><a href={EXTERNAL_LINKS.instagramPosts.offTheCuff}>off the cuff</a></b> in brixton on 15th august 2025. these have gained us a growing fanbase and a wave of recognition from the press, with our <b><a href={EXTERNAL_LINKS.press.voxwaveArticle}>interview with voxwave for XXII</a></b> being a particular highlight.
           </p>
+
 
           <div className="press-kit-gallery" aria-label="Press kit gallery">
             <img alt="Wendigo gallery image 1" className="press-kit-gallery-image" loading="lazy" src={PressKitGalleryImage1} />
@@ -32,10 +45,8 @@ export default function PressKitPage() {
           </div>
 
           <p className="press-kit-copy">
-            starting as a solo project, and expanding into a full band in twenty twenty-five, wendigo have already established ourselves as a band which values creativity and taking a radical approach to songwriting and performing.
-            our first major headline show in august twenty twenty-five at off the cuff, brixton, marked a breakthrough moment with a new wave of recognition for us. 
-            collectively we are seasoned performers, having played extensively across the uk in various bands, from underground club shows, to regional tours. wendigo brings together the experience, passion, and drive, that we have amassed from our previous projects in one focused outlet.
-            our next single, XXII, releases february twenty-sixth.
+            wendigo started as a solo project by singer/guitarist <b>theo stewart griffiths</b>, who has played across the uk in many bands, from underground club shows, to regional tours. it has now evolved into a full band project 
+            with the addition of bassist <b>toby hawkings</b>, an active member of the west sussex arts, film, and music scene, and drummer <b>rhys caswell</b>, who works as a FOH engineer and audio technician, in addition to touring the uk in various projects. the three of us are united by a shared vision for wendigo, and a desire to create music that pushes boundaries and connects with listeners on a deep and visceral level.
           </p>
         </div>
       </div>

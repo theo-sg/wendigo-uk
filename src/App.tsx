@@ -3,6 +3,7 @@ import HomeSections from './components/home/HomeSections'
 import FooterSection from './components/layout/FooterSection'
 import HeroSection from './components/layout/HeroSection'
 import { type NavItem } from './constants/navigation'
+import { EXTERNAL_LINKS } from './constants/links'
 import PressKitPage from './pages/PressKitPage'
 import MusicPage from './pages/MusicPage'
 
@@ -31,7 +32,7 @@ function App() {
 
     const widgetScript = document.createElement('script')
     widgetScript.id = 'bandsintown-widget-script'
-    widgetScript.src = 'https://widgetv3.bandsintown.com/main.min.js'
+    widgetScript.src = EXTERNAL_LINKS.embeds.bandsintownWidgetScript
     widgetScript.async = true
     document.body.appendChild(widgetScript)
 

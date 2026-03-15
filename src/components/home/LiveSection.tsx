@@ -1,3 +1,5 @@
+import { EXTERNAL_LINKS } from '../../constants/links'
+
 export default function LiveSection() {
   return (
     <section id="live" className="section home-anchor-section">
@@ -19,7 +21,7 @@ export default function LiveSection() {
               data-separator-color="rgba(255,255,255,0.2)"
               data-font="Helvetica"
               data-locale="en"
-              href="https://www.bandsintown.com/a/15590407"
+              href={EXTERNAL_LINKS.socials.bandsintown}
             >
               Bandsintown
             </a>

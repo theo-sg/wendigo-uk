@@ -1,4 +1,5 @@
 import xxiiImage from '../../assets/S0119128.JPEG'
+import { EXTERNAL_LINKS } from '../../constants/links'
 
 export default function NewSongSection() {
   return (
@@ -19,7 +20,7 @@ export default function NewSongSection() {
             <div className="embed-frame-wrap new-song-embed-wrap">
               <iframe
                 className="spotify-embed spotify-embed-compact"
-                src="https://open.spotify.com/embed/track/6ZFQFPBkSi6qdJTUIaqan0?utm_source=generator&theme=0"
+                src={EXTERNAL_LINKS.tracks.xxii.spotifyEmbed}
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
                 title="Wendigo latest single on Spotify"
@@ -30,7 +31,7 @@ export default function NewSongSection() {
               <div className="youtube-embed-wrap">
                 <iframe
                   className="youtube-embed"
-                  src="https://www.youtube.com/embed/VgJuSft0uD0"
+                  src={EXTERNAL_LINKS.tracks.xxii.youtubeEmbed}
                   title="Wendigo video preview"
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

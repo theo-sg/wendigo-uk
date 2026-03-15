@@ -276,6 +276,7 @@ body {
 .press-kit-header,
 .press-kit-copy,
 .press-kit-live-strip,
+.press-kit-main,
 .press-kit-gallery {
   width: min(980px, 100%);
   margin: 0 auto;
@@ -299,6 +300,13 @@ body {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
+}
+
+.press-kit-main-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
 }
 
 .press-kit-live-strip-image {
