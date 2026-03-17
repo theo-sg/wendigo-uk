@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 
 const RECAPTCHA_SCRIPT_ID = 'mailerlite-recaptcha-script'
 const RECAPTCHA_SITE_KEY = '6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD'
+const MAILERLITE_IFRAME_TARGET = 'mailerlite-submit-target'
 
 type Grecaptcha = {
   ready: (callback: () => void) => void
@@ -19,6 +20,7 @@ declare global {
 export default function MailerLiteHtmlForm() {
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null)
   const recaptchaWidgetIdRef = useRef<number | null>(null)
+  const hasStartedSubmitRef = useRef(false)
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -95,7 +97,7 @@ export default function MailerLiteHtmlForm() {
     }
   }, [])
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (isSubmitting || isSubmitted) {
@@ -114,25 +116,18 @@ export default function MailerLiteHtmlForm() {
       return
     }
 
-    try {
-      const form = event.currentTarget
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        mode: 'no-cors',
-      })
+    hasStartedSubmitRef.current = true
+    event.currentTarget.submit()
+  }
 
-      if (response.type === 'opaque' || response.ok) {
-        setIsSubmitted(true)
-        form.reset()
-      } else {
-        setSubmitError('something went wrong. please try again.')
-      }
-    } catch {
-      setSubmitError('unable to submit right now. please try again.')
-    } finally {
-      setIsSubmitting(false)
+  const handleIframeLoad = () => {
+    if (!hasStartedSubmitRef.current) {
+      return
     }
+
+    hasStartedSubmitRef.current = false
+    setIsSubmitting(false)
+    setIsSubmitted(true)
   }
 
   return (
@@ -141,11 +136,20 @@ export default function MailerLiteHtmlForm() {
       {isSubmitted ? (
         <p className="mailerlite-success">thank you! you have successfully joined our mailing list.</p>
       ) : (
+        <>
+          <iframe
+            name={MAILERLITE_IFRAME_TARGET}
+            title="mailerlite submit target"
+            className="mailerlite-submit-frame"
+            onLoad={handleIframeLoad}
+          />
+
         <form
           action="https://assets.mailerlite.com/jsonp/2200415/forms/182221510013879635/subscribe"
           className="mailerlite-form"
           method="post"
           onSubmit={handleSubmit}
+          target={MAILERLITE_IFRAME_TARGET}
         >
           <input
             id="ml-email-input"
@@ -176,6 +180,7 @@ export default function MailerLiteHtmlForm() {
 
           {submitError ? <p className="mailerlite-error">{submitError}</p> : null}
         </form>
+        </>
       )}
     </div>
   )

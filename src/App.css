@@ -411,6 +411,14 @@ body {
   gap: 0.7rem;
 }
 
+.mailerlite-submit-frame {
+  width: 0;
+  height: 0;
+  border: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
 .mailerlite-label {
   font-size: 0.85rem;
   color: #ffffffc9;
