@@ -371,8 +371,10 @@ body {
 
 .home-intro-section .container.padding-top {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(0.75rem, 2vw, 1.2rem);
   min-height: clamp(130px, 22vh, 270px);
 }
 
@@ -380,6 +382,106 @@ body {
   width: 100%;
   justify-content: center !important;
   text-align: center;
+}
+
+.home-intro-section .ml-embedded {
+  width: min(100%, 460px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mailerlite-form-shell {
+  width: min(100%, 460px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  border: 1px solid #ffffff2f;
+  background: #111;
+}
+
+.mailerlite-form-title {
+  margin: 0 0 0.8rem 0;
+  text-align: center;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+}
+
+.mailerlite-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.mailerlite-label {
+  font-size: 0.85rem;
+  color: #ffffffc9;
+  text-transform: lowercase;
+}
+
+.mailerlite-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ffffff52;
+  border-radius: 0;
+  background: #000;
+  color: #fff;
+}
+
+.mailerlite-recaptcha {
+  display: flex;
+  justify-content: center;
+  min-height: 78px;
+}
+
+.mailerlite-submit {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #ffffff7d;
+  background: #fff;
+  color: #000;
+  text-transform: lowercase;
+}
+
+.mailerlite-submit:hover,
+.mailerlite-submit:focus-visible {
+  border-color: var(--site-hover-accent);
+  background: var(--site-hover-accent);
+  color: var(--site-hover-accent-contrast);
+}
+
+.mailerlite-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.mailerlite-success,
+.mailerlite-error {
+  margin: 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.mailerlite-warning {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffd299;
+}
+
+.mailerlite-success {
+  color: #d6ffd6;
+}
+
+.mailerlite-error {
+  color: #ffb3b3;
+}
+
+@media (max-width: 480px) {
+  .mailerlite-recaptcha {
+    transform: scale(0.9);
+    transform-origin: center top;
+  }
 }
 
 .new-song-visual {
