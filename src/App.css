@@ -218,6 +218,65 @@ body {
   letter-spacing: 0;
 }
 
+.song-page-section.song-page-cologne {
+  background: linear-gradient(to bottom, #801CBA 0%, #000 100%) !important;
+}
+
+.song-page-section.song-page-xxii {
+  background: linear-gradient(to bottom, #3C394E 0%, #000 100%) !important;
+}
+
+.song-page-section.song-page-xvi {
+  background-image: url('./assets/pexels-kublizz-550505632-16856001.jpg') !important;
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.song-page-section.song-page-krakensbane {
+  background: linear-gradient(to bottom, #ce0800 0%, #000 100%) !important;
+}
+
+.song-lyrics-section {
+  width: min(920px, 100%);
+  margin-top: 10rem;
+  text-align: left;
+}
+
+.song-lyrics-title {
+  margin: 0 0 0.55rem;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.song-lyrics-box {
+  padding: clamp(1rem, 2.8vw, 1.45rem);
+  border: 1px solid #ffffff38;
+  background: #000;
+  color: #fff;
+}
+
+.song-lyrics-box p {
+  margin: 0;
+  color: #fff;
+  font-family: var(--site-font-family);
+  font-size: var(--site-copy-size);
+  font-weight: var(--site-copy-weight);
+  line-height: var(--site-copy-line-height);
+  text-align: justify;
+}
+
+.song-lyrics-box p + p {
+  margin-top: 1rem;
+}
+
 .song-page-media-stack {
   width: min(920px, 100%);
   display: flex;
@@ -264,12 +323,12 @@ body {
 }
 
 @media (max-width: 600px) {
-  .song-page-media-stack {
-    gap: 0.8rem;
+  .song-lyrics-section {
+    margin-top: 1.5rem;
   }
 
-  .song-page-section .song-back-link {
-    width: 100%;
+  .song-page-media-stack {
+    gap: 0.8rem;
   }
 }
 
@@ -1091,7 +1150,7 @@ label {
   overflow-x: hidden;
 }
   /* Remove unwanted gradients or backgrounds */
-  .hero-bg-image-wrap, .page-wrapper, .section {
+  .hero-bg-image-wrap, .page-wrapper {
     background: #000 !important;
   }
 

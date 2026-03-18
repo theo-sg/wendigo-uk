@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import HomeSections from './components/home/HomeSections'
 import FooterSection from './components/layout/FooterSection'
 import HeroSection from './components/layout/HeroSection'
-import { type NavItem } from './constants/navigation'
 import { EXTERNAL_LINKS } from './constants/links'
 import PressKitPage from './pages/PressKitPage'
 import MusicPage from './pages/MusicPage'
@@ -10,15 +10,14 @@ import MusicPage from './pages/MusicPage'
 import SongPageXXII from './pages/SongPageXXII'
 import SongPageCologne from './pages/SongPageCologne'
 import SongPageKrakensbane from './pages/SongPageKrakensbane'
+import SongPageXVI from './pages/SongPageXVI'
 
 import './App.css'
 
 function App() {
-  const pathname = window.location.pathname.toLowerCase()
-  const isMusicPage = pathname.startsWith('/music')
-  const isPressKitPage = pathname.startsWith('/press')
-  const isHomePage = !isMusicPage && !isPressKitPage
-  const musicSubpage = pathname.replace(/^\/music\/?/, '')
+  const location = useLocation()
+  const pathname = location.pathname.toLowerCase().replace(/\/+$/, '') || '/'
+  const isHomePage = pathname === '/'
 
   useEffect(() => {
     if (!isHomePage) {
@@ -42,94 +41,97 @@ function App() {
   }, [isHomePage])
 
   useEffect(() => {
-    if (!isHomePage) {
+    if (!location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
       return
     }
 
-    const scrollToHashTarget = () => {
-      const { hash } = window.location
-      if (!hash) {
-        return
-      }
-
-      const targetId = decodeURIComponent(hash.slice(1))
+    const initialScrollTimer = window.setTimeout(() => {
+      const targetId = decodeURIComponent(location.hash.slice(1))
       const targetElement = document.getElementById(targetId)
 
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
       }
-    }
-
-    const initialScrollTimer = window.setTimeout(scrollToHashTarget, 80)
-    window.addEventListener('hashchange', scrollToHashTarget)
+    }, 80)
 
     return () => {
       window.clearTimeout(initialScrollTimer)
-      window.removeEventListener('hashchange', scrollToHashTarget)
     }
-  }, [isHomePage])
-
-  const getNavHref = (item: NavItem) => {
-    if (!isHomePage) {
-      return item.musicHref ?? '/#merch'
-    }
-
-    return item.homeHref ?? '#merch'
-  }
-
-  if (isMusicPage) {
-    const isSongPage = ['xxii', 'cologne', 'krakensbane'].includes(musicSubpage)
-
-    const musicPageContent = (() => {
-      if (musicSubpage === 'xxii') {
-        return <SongPageXXII />
-      }
-
-      if (musicSubpage === 'cologne') {
-        return <SongPageCologne />
-      }
-
-      if (musicSubpage === 'krakensbane') {
-        return <SongPageKrakensbane />
-      }
-
-      return <MusicPage />
-    })()
-
-    if (isSongPage) {
-      return (
-        <div className="page-wrapper">
-          {musicPageContent}
-          <FooterSection />
-        </div>
-      )
-    }
-
-    return (
-      <div className="page-wrapper">
-        <HeroSection activeNavId="music" getNavHref={getNavHref} />
-        {musicPageContent}
-        <FooterSection />
-      </div>
-    )
-  }
-
-  if (isPressKitPage) {
-    return (
-      <div className="page-wrapper">
-        <HeroSection getNavHref={getNavHref} />
-        <PressKitPage />
-        <FooterSection />
-      </div>
-    )
-  }
+  }, [location.pathname, location.hash])
 
   return (
-    <div className="page-wrapper">
-      <HeroSection getNavHref={getNavHref} />
-      <HomeSections />
-      <FooterSection />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="page-wrapper">
+            <HeroSection />
+            <HomeSections />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route path="/home" element={<Navigate to="/" replace />} />
+      <Route
+        path="/music"
+        element={
+          <div className="page-wrapper">
+            <HeroSection activeNavId="music" />
+            <MusicPage />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route
+        path="/music/xvi"
+        element={
+          <div className="page-wrapper">
+            <SongPageXVI />
+          </div>
+        }
+      />
+      <Route
+        path="/music/xxii"
+        element={
+          <div className="page-wrapper">
+            <SongPageXXII />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route
+        path="/music/cologne"
+        element={
+          <div className="page-wrapper">
+            <SongPageCologne />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route
+        path="/music/krakensbane"
+        element={
+          <div className="page-wrapper">
+            <SongPageKrakensbane />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route
+        path="/press"
+        element={
+          <div className="page-wrapper">
+            <HeroSection />
+            <PressKitPage />
+            <FooterSection />
+          </div>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 

@@ -6,9 +6,10 @@ export default function MerchSection() {
       <div className="page-padding">
         <div className="container padding-top">
           <h2 className="anchor-title section-title-center">merch</h2>
-          <a className="merch-bandcamp-button" href={EXTERNAL_LINKS.socials.bandcamp} rel="noreferrer" target="_blank">
+          <p> coming soon. </p>
+          {/* <a className="merch-bandcamp-button" href={EXTERNAL_LINKS.socials.bandcamp} rel="noreferrer" target="_blank">
             merch available on bandcamp
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

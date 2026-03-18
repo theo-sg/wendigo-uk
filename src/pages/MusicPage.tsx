@@ -1,6 +1,7 @@
 import SongCoverCologne from '../assets/coverimage/cologne.jpg'
 import SongCoverKrakensbane from '../assets/coverimage/krakensbane.jpg'
 import SongCoverXXII from '../assets/coverimage/xxii.jpg'
+import { Link } from 'react-router-dom'
 
 const songs = [
   { title: 'XXII', href: '/music/xxii', cover: SongCoverXXII },
@@ -17,14 +18,14 @@ export default function MusicPage() {
 
           <div className="music-song-gallery" aria-label="Song pages">
             {songs.map((song) => (
-              <a key={song.href} className="music-song-card" href={song.href} aria-label={song.title}>
+              <Link key={song.href} className="music-song-card" to={song.href} aria-label={song.title}>
                 <img
                   className="music-song-cover"
                   src={song.cover}
                   alt={`${song.title} cover art`}
                   loading="lazy"
                 />
-              </a>
+              </Link>
             ))}
           </div>
         </div>

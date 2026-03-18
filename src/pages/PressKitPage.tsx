@@ -33,7 +33,7 @@ export default function PressKitPage() {
           </div>
 
           <p className="press-kit-copy">
-            we've built momentum behind our project, with three singles released, <b><a href={EXTERNAL_LINKS.tracks.xxii.spotify}>XXII</a></b>, <b><a href={EXTERNAL_LINKS.tracks.krakensbane.spotify}>KRAKENSBANE</a></b>, and <b><a href={EXTERNAL_LINKS.tracks.cologne.spotify}>COLOGNE</a></b> each hitting over one thousand streams in their first week of release.
+            we've built up momentum, with three singles released, <b><a href={EXTERNAL_LINKS.tracks.xxii.spotify}>XXII</a></b>, <b><a href={EXTERNAL_LINKS.tracks.krakensbane.spotify}>KRAKENSBANE</a></b>, and <b><a href={EXTERNAL_LINKS.tracks.cologne.spotify}>COLOGNE</a></b> each hitting over one thousand streams in their first week of release.
             these releases, as well as two huge headline shows at <b><a href={EXTERNAL_LINKS.instagramPosts.camdenAssembly}>camden assembly</a></b> on 5th march 2026, and <b><a href={EXTERNAL_LINKS.instagramPosts.offTheCuff}>off the cuff</a></b> in brixton on 15th august 2025. these have gained us a growing fanbase and a wave of recognition from the press, with our <b><a href={EXTERNAL_LINKS.press.voxwaveArticle}>interview with voxwave for XXII</a></b> being a particular highlight.
           </p>
 
@@ -45,8 +45,8 @@ export default function PressKitPage() {
           </div>
 
           <p className="press-kit-copy">
-            wendigo started as a solo project by singer/guitarist <b>theo stewart griffiths</b>, who has played across the uk in many bands, from underground club shows, to regional tours. it has now evolved into a full band project 
-            with the addition of bassist <b>toby hawkings</b>, an active member of the west sussex arts, film, and music scene, and drummer <b>rhys caswell</b>, who works as a FOH engineer and audio technician, in addition to touring the uk in various projects. the three of us are united by a shared vision for wendigo, and a desire to create music that pushes boundaries and connects with listeners on a deep and visceral level.
+            wendigo started as a solo project by singer/guitarist <b>theo stewart griffiths</b>, who has played across the uk in many bands, from underground club shows, to regional tours. it has now evolved into a full band 
+            with the addition of bassist <b>toby hawkings</b>, an active member of the west sussex arts, film, and music scene, and drummer <b>rhys caswell</b>, who works as a FOH engineer and audio technician, in addition to touring the uk with various bands. the three of us are united by a shared aesthetic vision for wendigo, and a desire to create music that pushes boundaries and connects with listeners on a deep and visceral level.
           </p>
         </div>
       </div>
