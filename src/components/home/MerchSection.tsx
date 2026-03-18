@@ -1,4 +1,4 @@
-import { EXTERNAL_LINKS } from '../../constants/links'
+//import { EXTERNAL_LINKS } from '../../constants/links'
 
 export default function MerchSection() {
   return (
