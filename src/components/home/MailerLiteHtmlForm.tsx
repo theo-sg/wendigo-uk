@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import useExternalScript from '../../hooks/useExternalScript'
 
 const RECAPTCHA_SCRIPT_ID = 'mailerlite-recaptcha-script'
 const RECAPTCHA_SITE_KEY = '6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD'
@@ -22,6 +23,13 @@ export default function MailerLiteHtmlForm() {
   const recaptchaWidgetIdRef = useRef<number | null>(null)
   const hasStartedSubmitRef = useRef(false)
 
+  const recaptchaScriptStatus = useExternalScript({
+    id: RECAPTCHA_SCRIPT_ID,
+    src: 'https://www.google.com/recaptcha/api.js?render=explicit',
+    target: 'body',
+    timeoutMs: 7000,
+  })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isRecaptchaReady, setIsRecaptchaReady] = useState(false)
@@ -29,73 +37,33 @@ export default function MailerLiteHtmlForm() {
   const [submitError, setSubmitError] = useState<string | null>(null)
 
   useEffect(() => {
-    let loadTimeoutId = 0
+    const { grecaptcha } = window
+    const container = recaptchaContainerRef.current
 
-    const renderRecaptcha = () => {
-      const { grecaptcha } = window
-      const container = recaptchaContainerRef.current
+    if (recaptchaScriptStatus === 'error') {
+      if (recaptchaWidgetIdRef.current === null) {
+        setRecaptchaLoadFailed(true)
+        setIsRecaptchaReady(false)
+      }
+      return
+    }
 
-      if (!grecaptcha || !container || recaptchaWidgetIdRef.current !== null) {
+    if ((recaptchaScriptStatus !== 'ready' && !grecaptcha) || !container || recaptchaWidgetIdRef.current !== null) {
+      return
+    }
+
+    grecaptcha?.ready(() => {
+      if (!recaptchaContainerRef.current || recaptchaWidgetIdRef.current !== null || !window.grecaptcha) {
         return
       }
 
-      grecaptcha.ready(() => {
-        if (!recaptchaContainerRef.current || recaptchaWidgetIdRef.current !== null) {
-          return
-        }
-
-        recaptchaWidgetIdRef.current = grecaptcha.render(recaptchaContainerRef.current, {
-          sitekey: RECAPTCHA_SITE_KEY,
-        })
-        setRecaptchaLoadFailed(false)
-        setIsRecaptchaReady(true)
+      recaptchaWidgetIdRef.current = window.grecaptcha.render(recaptchaContainerRef.current, {
+        sitekey: RECAPTCHA_SITE_KEY,
       })
-    }
-
-    const handleRecaptchaLoadFailure = () => {
-      if (recaptchaWidgetIdRef.current !== null) {
-        return
-      }
-
-      setRecaptchaLoadFailed(true)
-      setIsRecaptchaReady(false)
-    }
-
-    const existingScript = document.getElementById(RECAPTCHA_SCRIPT_ID) as HTMLScriptElement | null
-
-    if (existingScript) {
-      if (existingScript.dataset.loaded === 'true') {
-        renderRecaptcha()
-      } else {
-        existingScript.addEventListener('load', renderRecaptcha, { once: true })
-        existingScript.addEventListener('error', handleRecaptchaLoadFailure, { once: true })
-      }
-      loadTimeoutId = window.setTimeout(handleRecaptchaLoadFailure, 7000)
-      return () => {
-        window.clearTimeout(loadTimeoutId)
-        existingScript.removeEventListener('error', handleRecaptchaLoadFailure)
-      }
-    }
-
-    const script = document.createElement('script')
-    script.id = RECAPTCHA_SCRIPT_ID
-    script.src = 'https://www.google.com/recaptcha/api.js?render=explicit'
-    script.async = true
-    script.defer = true
-    script.addEventListener('load', () => {
-      script.dataset.loaded = 'true'
-      renderRecaptcha()
+      setRecaptchaLoadFailed(false)
+      setIsRecaptchaReady(true)
     })
-    script.addEventListener('error', handleRecaptchaLoadFailure, { once: true })
-    document.body.appendChild(script)
-
-    loadTimeoutId = window.setTimeout(handleRecaptchaLoadFailure, 7000)
-
-    return () => {
-      window.clearTimeout(loadTimeoutId)
-      script.removeEventListener('error', handleRecaptchaLoadFailure)
-    }
-  }, [])
+  }, [recaptchaScriptStatus])
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()

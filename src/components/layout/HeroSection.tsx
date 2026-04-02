@@ -42,7 +42,15 @@ export default function HeroSection({ activeNavId }: HeroSectionProps) {
     <section className="section hero-section">
       <div className="hero_main">
         <div className="hero-bg-image-wrap">
-          <img alt="wendigo" className="hero-bg-image" loading="eager" sizes="(max-width: 2778px) 100vw, 2778px" src={heroImage} />
+          <img
+            alt="wendigo"
+            className="hero-bg-image"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            sizes="(max-width: 2778px) 100vw, 2778px"
+            src={heroImage}
+          />
         </div>
         <Link
           aria-label="Go to homepage"
@@ -50,7 +58,7 @@ export default function HeroSection({ activeNavId }: HeroSectionProps) {
           to="/"
           onClick={(event) => handleInternalNavClick(event, '/')}
         >
-          <img alt="Logo" className="hero-logo" src={logo} />
+          <img alt="Logo" className="hero-logo" src={logo} draggable={false} />
         </Link>
       </div>
       <nav className="hero-navbar" aria-label="Main">

@@ -1,13 +1,6 @@
-import SongCoverCologne from '../../assets/coverimage/cologne.jpg'
-import SongCoverKrakensbane from '../../assets/coverimage/krakensbane.jpg'
-import SongCoverXXII from '../../assets/coverimage/xxii.jpg'
 import { Link } from 'react-router-dom'
+import { HOME_SONG_ORDER, SONGS } from '../../constants/songs'
 
-const songs = [
-  { title: 'XXII', href: '/music/xxii', cover: SongCoverXXII },
-  { title: 'COLOGNE', href: '/music/cologne', cover: SongCoverCologne },
-  { title: 'KRAKENSBANE', href: '/music/krakensbane', cover: SongCoverKrakensbane },
-]
 
 export default function MusicSection() {
   return (
@@ -17,8 +10,11 @@ export default function MusicSection() {
           <h1 className="anchor-title">music</h1>
 
           <div className="music-song-gallery" aria-label="Song pages">
-            {songs.map((song) => (
-              <Link key={song.href} className="music-song-card" to={song.href} aria-label={song.title}>
+            {HOME_SONG_ORDER.map((slug) => {
+              const song = SONGS[slug]
+
+              return (
+                <Link key={song.slug} className="music-song-card" to={`/music/${song.slug}`} aria-label={song.title}>
                 <img
                   className="music-song-cover"
                   src={song.cover}
@@ -26,7 +22,8 @@ export default function MusicSection() {
                   loading="lazy"
                 />
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import { EXTERNAL_LINKS } from '../../constants/links'
+import ExternalLink from '../common/ExternalLink'
+import SafeIframe from '../common/SafeIframe'
 
 export default function NewsSection() {
   return (
@@ -12,10 +14,9 @@ export default function NewsSection() {
             <h3 className="news-blog-title">camden assembly, march fifth - our biggest headline show so far</h3>
             <p className="news-blog-excerpt">our biggest show so far, march fifth, at @camdenassembly, last week. a new era of wendigo is upon us. thank you all for being a part of it, and thank you to the incredibly talented @ethnephoto for these photos, and @liamchapmanaudio for bringing di-gaze to life live</p>
             <div className="news-instagram-wrap">
-              <iframe
+              <SafeIframe
                 className="news-instagram-embed"
                 src={EXTERNAL_LINKS.embeds.instagramPost}
-                loading="lazy"
                 allowTransparency={true}
                 allow="encrypted-media"
                 title="Wendigo Instagram post"
@@ -29,11 +30,10 @@ export default function NewsSection() {
             <p className="news-blog-excerpt">
               A Stare That Hits Hard: &quot;Wendigo&apos;s Music Should Feel Like A Kubrick Stare&quot; &mdash; And They Mean It
             </p>
-            <a
+            <ExternalLink
               aria-label="Open Voxwave article"
               className="news-blog-image-link"
               href={EXTERNAL_LINKS.press.voxwaveArticle}
-              rel="noreferrer"
               target="_blank"
             >
               <img
@@ -42,15 +42,14 @@ export default function NewsSection() {
                 loading="lazy"
                 src={EXTERNAL_LINKS.press.voxwaveImage}
               />
-            </a>
-            <a
+            </ExternalLink>
+            <ExternalLink
               className="news-blog-link"
               href={EXTERNAL_LINKS.press.voxwaveArticle}
-              rel="noreferrer"
               target="_blank"
             >
               read full article
-            </a>
+            </ExternalLink>
           </article>
         </div>
       </div>

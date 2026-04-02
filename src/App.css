@@ -273,6 +273,10 @@ body {
   text-align: justify;
 }
 
+.song-lyrics-text {
+  white-space: pre-line;
+}
+
 .song-lyrics-box p + p {
   margin-top: 1rem;
 }
@@ -299,6 +303,11 @@ body {
   width: 100%;
   height: 120px;
   border: 0;
+}
+
+.song-bandcamp-fallback {
+  margin: 0.55rem 0 0;
+  text-align: center;
 }
 
 .song-page-section .song-back-link {
@@ -773,6 +782,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .hero-logo-link .hero-logo {
@@ -785,6 +797,10 @@ body {
   max-height: none !important;
   z-index: 1 !important;
   transition: opacity 180ms ease;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .hero-logo-link:hover .hero-logo,

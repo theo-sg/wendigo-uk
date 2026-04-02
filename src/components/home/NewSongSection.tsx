@@ -1,5 +1,6 @@
 import xxiiImage from '../../assets/S0119128.JPEG'
 import { EXTERNAL_LINKS } from '../../constants/links'
+import SafeIframe from '../common/SafeIframe'
 
 export default function NewSongSection() {
   return (
@@ -18,24 +19,21 @@ export default function NewSongSection() {
               <span className="new-song-title-sub">is nothing sacred anymore?</span>
             </h2>
             <div className="embed-frame-wrap new-song-embed-wrap">
-              <iframe
+              <SafeIframe
                 className="spotify-embed spotify-embed-compact"
                 src={EXTERNAL_LINKS.tracks.xxii.spotifyEmbed}
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
                 title="Wendigo latest single on Spotify"
               />
             </div>
 
             <div className="embed-frame-wrap new-song-youtube-wrap">
               <div className="youtube-embed-wrap">
-                <iframe
+                <SafeIframe
                   className="youtube-embed"
                   src={EXTERNAL_LINKS.tracks.xxii.youtubeEmbed}
                   title="Wendigo video preview"
-                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 />
               </div>
