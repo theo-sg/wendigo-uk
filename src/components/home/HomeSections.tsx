@@ -1,6 +1,7 @@
 import IntroSection from './IntroSection'
 import LiveSection from './LiveSection'
 import MerchSection from './MerchSection'
+import MusicSection from './MusicSection'
 import NewSongSection from './NewSongSection'
 import NewsSection from './NewsSection'
 
@@ -11,6 +12,7 @@ export default function HomeSections() {
       <NewSongSection />
       <LiveSection />
       <MerchSection />
+      <MusicSection />
       <NewsSection />
     </div>
   )

@@ -1,6 +1,6 @@
-import SongCoverCologne from '../assets/coverimage/cologne.jpg'
-import SongCoverKrakensbane from '../assets/coverimage/krakensbane.jpg'
-import SongCoverXXII from '../assets/coverimage/xxii.jpg'
+import SongCoverCologne from '../../assets/coverimage/cologne.jpg'
+import SongCoverKrakensbane from '../../assets/coverimage/krakensbane.jpg'
+import SongCoverXXII from '../../assets/coverimage/xxii.jpg'
 import { Link } from 'react-router-dom'
 
 const songs = [
@@ -9,7 +9,7 @@ const songs = [
   { title: 'KRAKENSBANE', href: '/music/krakensbane', cover: SongCoverKrakensbane },
 ]
 
-export default function MusicPage() {
+export default function MusicSection() {
   return (
     <section id="music" className="section home-anchor-section music-page-section">
       <div className="page-padding">

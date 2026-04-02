@@ -5,7 +5,6 @@ import FooterSection from './components/layout/FooterSection'
 import HeroSection from './components/layout/HeroSection'
 import { EXTERNAL_LINKS } from './constants/links'
 import PressKitPage from './pages/PressKitPage'
-import MusicPage from './pages/MusicPage'
 
 import SongPageXXII from './pages/SongPageXXII'
 import SongPageCologne from './pages/SongPageCologne'
@@ -51,7 +50,8 @@ function App() {
       const targetElement = document.getElementById(targetId)
 
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const blockAlignment = targetId.toLowerCase() === 'news' ? 'start' : 'center'
+        targetElement.scrollIntoView({ behavior: 'smooth', block: blockAlignment })
       } else {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
       }
@@ -75,16 +75,6 @@ function App() {
         }
       />
       <Route path="/home" element={<Navigate to="/" replace />} />
-      <Route
-        path="/music"
-        element={
-          <div className="page-wrapper">
-            <HeroSection activeNavId="music" />
-            <MusicPage />
-            <FooterSection />
-          </div>
-        }
-      />
       <Route
         path="/music/xvi"
         element={

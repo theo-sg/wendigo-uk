@@ -413,6 +413,7 @@ body {
 
 .home-main-sections #live.home-anchor-section,
 .home-main-sections #merch.home-anchor-section,
+.home-main-sections #music.home-anchor-section,
 .home-main-sections #news.home-anchor-section {
   margin-top: calc(var(--home-section-gap) * var(--home-emphasis-gap-multiplier));
 }

@@ -33,7 +33,8 @@ export default function HeroSection({ activeNavId }: HeroSectionProps) {
     const targetElement = document.getElementById(targetId)
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const blockAlignment = targetId.toLowerCase() === 'news' ? 'start' : 'center'
+      targetElement.scrollIntoView({ behavior: 'smooth', block: blockAlignment })
     }
   }
 
