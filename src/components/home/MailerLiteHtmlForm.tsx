@@ -102,7 +102,7 @@ export default function MailerLiteHtmlForm() {
     <div className="mailerlite-form-shell">
       <h4 className="mailerlite-form-title">sign up to our mailing list</h4>
       {isSubmitted ? (
-        <p className="mailerlite-success">thank you! you should receive a confirmation email shortly. click on the link within that email to complete your subscription.</p>
+        <p className="mailerlite-success">thank you for signing up. stay alert.</p>
       ) : (
         <>
           <iframe
