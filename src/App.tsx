@@ -2,8 +2,6 @@ import { lazy, Suspense, useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import HomeSections from './components/home/HomeSections'
 import PageShell from './components/layout/PageShell'
-import { EXTERNAL_LINKS } from './constants/links'
-import useExternalScript from './hooks/useExternalScript'
 
 import './App.css'
 
@@ -13,17 +11,6 @@ const PressKitPage = lazy(() => import('./pages/PressKitPage'))
 
 function App() {
   const location = useLocation()
-  const pathname = location.pathname.toLowerCase().replace(/\/+$/, '') || '/'
-  const isHomePage = pathname === '/'
-
-  useExternalScript({
-    id: 'bandsintown-widget-script',
-    src: EXTERNAL_LINKS.embeds.bandsintownWidgetScript,
-    enabled: isHomePage,
-    target: 'body',
-    reloadOnMount: true,
-    removeOnUnmount: true,
-  })
 
   useEffect(() => {
     if (!location.hash) {

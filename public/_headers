@@ -1,0 +1,9 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://widgetv3.bandsintown.com https://assets.mailerlite.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; connect-src 'self' https:; frame-src 'self' https://open.spotify.com https://www.youtube.com https://bandcamp.com https://www.instagram.com https://assets.mailerlite.com https://www.google.com https://www.gstatic.com; font-src 'self' data: https://cdn.prod.website-files.com https://fonts.gstatic.com; base-uri 'self'; form-action 'self' https://assets.mailerlite.com; object-src 'none'; upgrade-insecure-requests
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

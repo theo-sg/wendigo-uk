@@ -767,10 +767,125 @@ body {
 .live-widget-card {
   width: min(920px, 100%);
   margin: 0;
-  padding: 0.4rem;
+  padding: 0.6rem;
   border: 1px solid #ffffff26;
   border-radius: 12px;
   background: #0000005e;
+}
+
+.live-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.live-grid-row {
+  display: grid;
+  grid-template-columns: minmax(120px, auto) minmax(220px, 1fr) minmax(220px, 1fr) auto;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.live-grid-row {
+  padding: 0.95rem 0.4rem;
+  border-bottom: 1px solid #ffffff1f;
+}
+
+.live-grid-row:last-child {
+  border-bottom: 0;
+}
+
+.live-col {
+  color: #fff;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.live-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.live-date-day {
+  line-height: 1;
+  color: #ce0800;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.live-date-month {
+  line-height: 1;
+  color: #ce0800;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.live-location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.live-lineup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.live-venue {
+  font-weight: 700;
+}
+
+.live-city {
+  font-weight: 500;
+}
+
+.live-location,
+.live-lineup {
+  overflow-wrap: anywhere;
+}
+
+.live-ticket {
+  justify-self: end;
+}
+
+.live-ticket-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.35rem;
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+  font-size: 1.24rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.live-ticket-link:hover,
+.live-ticket-link:focus-visible {
+  color: var(--site-hover-accent-contrast);
+  background: var(--site-hover-accent);
+  border-color: var(--site-hover-accent);
+}
+
+@media (max-width: 900px) {
+  .live-grid-row {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .live-ticket {
+    justify-self: start;
+    margin-top: 0.25rem;
+  }
 }
 
 .hero-logo-link {
