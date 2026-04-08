@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import { EXTERNAL_LINKS } from './links'
-
-=======
->>>>>>> 57c1fd3 ([-] Bandsintown integration update)
 export type LiveShow = {
   id: string
   dayLabel: string
