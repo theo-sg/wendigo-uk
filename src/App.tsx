@@ -8,6 +8,7 @@ import './App.css'
 const SongPageXVI = lazy(() => import('./pages/SongPageXVI'))
 const SongPageBySlug = lazy(() => import('./pages/SongPageBySlug'))
 const PressKitPage = lazy(() => import('./pages/PressKitPage'))
+const TechRiderPage = lazy(() => import('./pages/TechRiderPage'))
 
 function App() {
   const location = useLocation()
@@ -70,6 +71,10 @@ function App() {
               <PressKitPage />
             </PageShell>
           }
+        />
+        <Route
+          path="/tech-rider"
+          element={<TechRiderPage />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
