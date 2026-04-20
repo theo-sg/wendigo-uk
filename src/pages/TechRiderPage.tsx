@@ -1,15 +1,13 @@
 export default function TechRiderPage() {
   return (
-    <div className="tech-rider-container">
-      <iframe
+    <div className="tech-rider-container" style={{ padding: '20px', textAlign: 'center' }}>
+      <embed
         src="/WENDIGO_ARTIST_TECH_RIDER_2026.pdf"
-        title="Wendigo Tech Rider"
-        style={{
-          width: '100%',
-          height: '100vh',
-          border: 'none',
-        }}
+        type="application/pdf"
+        width="100%"
+        height="800px"
+        style={{ border: 'none' }}
       />
     </div>
-  )
+  );
 }
