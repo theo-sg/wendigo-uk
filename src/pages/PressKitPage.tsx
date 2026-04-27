@@ -49,6 +49,20 @@ export default function PressKitPage() {
             wendigo started as a solo project by singer/guitarist <b>theo stewart griffiths</b>, who has played across the uk in many bands, from underground club shows, to regional tours. it has now evolved into a full band 
             with the addition of bassist <b>toby hawkings</b>, an active member of the west sussex arts, film, and music scene, and drummer <b>rhys caswell</b>, who works as a FOH engineer and audio technician, in addition to touring the uk with various bands. the three of us are united by a shared aesthetic vision for wendigo, and a desire to create music that pushes boundaries and connects with listeners on a deep and visceral level.
           </p>
+
+          <div className="press-kit-video-section" aria-label="Wendigo video">
+            <div className="youtube-embed-wrap">
+              <iframe
+                className="youtube-embed"
+                src={EXTERNAL_LINKS.tracks.krakensbane.youtubeLiveEmbed}
+                title="KRAKENSBANE LIVE AT CAMDEN ASSEMBLY"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

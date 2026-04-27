@@ -39,6 +39,18 @@ export default function NewSongSection() {
               </div>
             </div>
           </div>
+
+          <div className="new-song-video-embed">
+            <div className="youtube-embed-wrap">
+              <SafeIframe
+                className="youtube-embed"
+                src={EXTERNAL_LINKS.tracks.krakensbane.youtubeLiveEmbed}
+                title="KRAKENSBANE LIVE AT CAMDEN ASSEMBLY"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

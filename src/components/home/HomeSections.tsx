@@ -12,7 +12,7 @@ export default function HomeSections() {
       <NewSongSection />
       <LiveSection />
       <MerchSection />
-      <MusicSection />
+      <MusicSection />      
       <NewsSection />
     </div>
   )
