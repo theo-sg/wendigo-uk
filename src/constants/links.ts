@@ -48,7 +48,7 @@ export const EXTERNAL_LINKS = {
       spotify: 'https://open.spotify.com/track/2D0VTDX74gfaY4SJ8Txal3?si=6a76f62a763d49f4',
       spotifyEmbed: 'https://open.spotify.com/embed/track/2D0VTDX74gfaY4SJ8Txal3?utm_source=generator&theme=0',
       youtubeEmbed: 'https://www.youtube.com/embed/6UwWjaHzBnw',
-      youtubeLiveEmbed: 'https://youtube.com/embed/jtr6RigXaak',
+      youtubeLiveEmbed: 'https://www.youtube.com/embed/jtr6RigXaak',
       bandcamp: 'https://wendigo-uk.bandcamp.com/track/krakensbane',
       bandcampEmbed:
         'https://bandcamp.com/EmbeddedPlayer/v=2/track=4285040030/size=large/bgcol=0b0b0b/linkcol=ffffff/tracklist=false/artwork=small/',
