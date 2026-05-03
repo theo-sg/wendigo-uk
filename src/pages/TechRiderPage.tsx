@@ -1,6 +1,14 @@
+import SEO from '../components/common/SEO'
+
 export default function TechRiderPage() {
   return (
-    <div className="tech-rider-container" style={{ padding: '20px', textAlign: 'center' }}>
+    <>
+      <SEO
+        title="Tech Rider - Wendigo"
+        description="Technical specifications and requirements for Wendigo live performances. Download the complete tech rider PDF."
+        url="/tech-rider"
+      />
+      <div className="tech-rider-container" style={{ padding: '20px', textAlign: 'center' }}>
       {/* Try embed first */}
       <embed
         src="/WENDIGO_ARTIST_TECH_RIDER_2026.pdf"
@@ -40,5 +48,6 @@ export default function TechRiderPage() {
         </a>
       </p>
     </div>
+    </>
   );
 }

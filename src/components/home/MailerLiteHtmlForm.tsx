@@ -5,6 +5,11 @@ import useExternalScript from '../../hooks/useExternalScript'
 const RECAPTCHA_SCRIPT_ID = 'mailerlite-recaptcha-script'
 const RECAPTCHA_SITE_KEY = '6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD'
 const MAILERLITE_IFRAME_TARGET = 'mailerlite-submit-target'
+const RATE_LIMIT_KEY = 'wendigo_newsletter_submit_time'
+const RATE_LIMIT_MS = 60000 // 1 minute
+
+// Email validation regex (RFC 5322 simplified)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 type Grecaptcha = {
   ready: (callback: () => void) => void
@@ -22,6 +27,7 @@ export default function MailerLiteHtmlForm() {
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null)
   const recaptchaWidgetIdRef = useRef<number | null>(null)
   const hasStartedSubmitRef = useRef(false)
+  const emailInputRef = useRef<HTMLInputElement | null>(null)
 
   const recaptchaScriptStatus = useExternalScript({
     id: RECAPTCHA_SCRIPT_ID,
@@ -35,6 +41,7 @@ export default function MailerLiteHtmlForm() {
   const [isRecaptchaReady, setIsRecaptchaReady] = useState(false)
   const [recaptchaLoadFailed, setRecaptchaLoadFailed] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [emailError, setEmailError] = useState<string | null>(null)
 
   useEffect(() => {
     const { grecaptcha } = window
@@ -65,6 +72,29 @@ export default function MailerLiteHtmlForm() {
     })
   }, [recaptchaScriptStatus])
 
+  // Validate email on input
+  const validateEmail = (email: string): boolean => {
+    if (!email) {
+      setEmailError('email address is required.')
+      return false
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      setEmailError('please enter a valid email address.')
+      return false
+    }
+    setEmailError(null)
+    return true
+  }
+
+  // Check if rate limited
+  const isRateLimited = (): boolean => {
+    const lastSubmitTime = localStorage.getItem(RATE_LIMIT_KEY)
+    if (!lastSubmitTime) return false
+
+    const timeSinceLastSubmit = Date.now() - parseInt(lastSubmitTime, 10)
+    return timeSinceLastSubmit < RATE_LIMIT_MS
+  }
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -72,8 +102,23 @@ export default function MailerLiteHtmlForm() {
       return
     }
 
-    setIsSubmitting(true)
     setSubmitError(null)
+    setEmailError(null)
+
+    // Validate email
+    const emailInput = emailInputRef.current
+    const email = emailInput?.value || ''
+    if (!validateEmail(email)) {
+      return
+    }
+
+    // Check rate limiting
+    if (isRateLimited()) {
+      setSubmitError('please wait before submitting again.')
+      return
+    }
+
+    setIsSubmitting(true)
 
     const widgetId = recaptchaWidgetIdRef.current
     const captchaResponse = window.grecaptcha?.getResponse(widgetId ?? undefined) ?? ''
@@ -83,6 +128,9 @@ export default function MailerLiteHtmlForm() {
       setIsSubmitting(false)
       return
     }
+
+    // Store submission time for rate limiting
+    localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString())
 
     hasStartedSubmitRef.current = true
     event.currentTarget.submit()
@@ -112,42 +160,49 @@ export default function MailerLiteHtmlForm() {
             onLoad={handleIframeLoad}
           />
 
-        <form
-          action="https://assets.mailerlite.com/jsonp/2200415/forms/182221510013879635/subscribe"
-          className="mailerlite-form"
-          method="post"
-          onSubmit={handleSubmit}
-          target={MAILERLITE_IFRAME_TARGET}
-        >
-          <input
-            id="ml-email-input"
-            aria-label="email"
-            aria-required="true"
-            autoComplete="email"
-            className="mailerlite-input"
-            name="fields[email]"
-            placeholder="enter your email address here"
-            type="email"
-            required
-          />
+          <form
+            action="https://assets.mailerlite.com/jsonp/2200415/forms/182221510013879635/subscribe"
+            className="mailerlite-form"
+            method="post"
+            onSubmit={handleSubmit}
+            target={MAILERLITE_IFRAME_TARGET}
+          >
+            <div>
+              <input
+                ref={emailInputRef}
+                id="ml-email-input"
+                aria-label="email"
+                aria-required="true"
+                autoComplete="email"
+                className="mailerlite-input"
+                name="fields[email]"
+                placeholder="enter your email address here"
+                type="email"
+                onChange={() => {
+                  const email = emailInputRef.current?.value || ''
+                  if (email) validateEmail(email)
+                }}
+              />
+              {emailError && <p className="mailerlite-error" role="alert">{emailError}</p>}
+            </div>
 
-          <input name="ml-submit" type="hidden" value="1" />
-          <input name="anticsrf" type="hidden" value="true" />
+            <input name="ml-submit" type="hidden" value="1" />
+            <input name="anticsrf" type="hidden" value="true" />
 
-          <div className="mailerlite-recaptcha" ref={recaptchaContainerRef}></div>
+            <div className="mailerlite-recaptcha" ref={recaptchaContainerRef}></div>
 
-          <button className="mailerlite-submit" type="submit" disabled={isSubmitting || !isRecaptchaReady}>
-            {isSubmitting ? 'submitting...' : 'sign up now'}
-          </button>
+            <button className="mailerlite-submit" type="submit" disabled={isSubmitting || !isRecaptchaReady}>
+              {isSubmitting ? 'submitting...' : 'sign up now'}
+            </button>
 
-          {recaptchaLoadFailed ? (
-            <p className="mailerlite-warning">
-              captcha failed to load. disable content blockers and refresh this page to try again.
-            </p>
-          ) : null}
+            {recaptchaLoadFailed ? (
+              <p className="mailerlite-warning">
+                captcha failed to load. disable content blockers and refresh this page to try again.
+              </p>
+            ) : null}
 
-          {submitError ? <p className="mailerlite-error">{submitError}</p> : null}
-        </form>
+            {submitError ? <p className="mailerlite-error" role="alert">{submitError}</p> : null}
+          </form>
         </>
       )}
     </div>

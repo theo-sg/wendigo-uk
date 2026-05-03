@@ -1,10 +1,14 @@
 import ExternalLink from '../common/ExternalLink'
+import { EventStructuredData } from '../common/StructuredData'
 import { LIVE_SHOWS } from '../../constants/liveShows.ts'
 import type { LiveShow } from '../../constants/liveShows.ts'
 
 export default function LiveSection() {
   return (
     <section id="live" className="section home-anchor-section">
+      {LIVE_SHOWS.map((show: LiveShow) => (
+        <EventStructuredData key={`structured-${show.id}`} show={show} />
+      ))}
       <div className="page-padding">
         <div className="container padding-top">
           <h2 className="anchor-title section-title-center">live</h2>

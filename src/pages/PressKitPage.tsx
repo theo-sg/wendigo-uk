@@ -6,12 +6,20 @@ import PressKitGalleryImage2 from '../assets/heroimage/_DSF9736.jpg'
 import PressKitGalleryImage3 from '../assets/heroimage/_DSF9786.jpg'
 import { EXTERNAL_LINKS } from '../constants/links'
 import ExternalLink from '../components/common/ExternalLink'
+import SEO from '../components/common/SEO'
 
 import PressKitMainImage from '../assets/liveimage/_DSF9775.jpg'
 
 export default function PressKitPage() {
   return (
-    <section className="section home-anchor-section music-page-section press-kit-page-section">
+    <>
+      <SEO
+        title="Press Kit - Wendigo"
+        description="Official press kit for Wendigo, alternative rock band from London. Includes bio, photos, videos, and contact information for press inquiries."
+        image={PressKitMainImage}
+        url="/press"
+      />
+      <section className="section home-anchor-section music-page-section press-kit-page-section">
       <div className="page-padding">
         <div className="container padding-top">
           <div className="press-kit-header">
@@ -21,7 +29,6 @@ export default function PressKitPage() {
           <div className="press-kit-main" aria-label="Press kit main image">
             <img alt="Wendigo press kit main image" className="press-kit-main-image" loading="lazy" decoding="async" src={PressKitMainImage} />
           </div>
-
           <p className="press-kit-copy">
             <b>wendigo</b> is a three piece alternative rock band from london, uk. our self-coined <b>‘di-gaze’</b> sound channels the rawness of grunge and alt rock and the sonic experimentation of shoegaze - pushing both to their absolute limits with a modern approach to production, coupled with energetic live performances. 
             
@@ -66,5 +73,6 @@ export default function PressKitPage() {
         </div>
       </div>
     </section>
+    </>
   )
 }
