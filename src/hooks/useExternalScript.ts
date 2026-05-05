@@ -47,50 +47,45 @@ export default function useExternalScript({
 
     const targetParent = target === 'head' ? doc.head : doc.body
 
-    const script =
-      (reloadOnMount ? null : (doc.getElementById(id) as HTMLScriptElement | null)) ||
-      doc.createElement('script')
+    const script = existingScript || doc.createElement('script')
+    script.id = id
+    script.src = src
+    script.async = async
+    script.defer = defer
 
-    const handleReady = () => {
-      script.dataset.loaded = 'true'
+    const handleLoad = () => {
       setStatus('ready')
+      if (timeoutId) clearTimeout(timeoutId)
     }
 
     const handleError = () => {
       setStatus('error')
+      if (timeoutId) clearTimeout(timeoutId)
     }
 
-    if (script.dataset.loaded === 'true') {
-      setStatus('ready')
-      return
-    }
-
-    script.addEventListener('load', handleReady)
-    script.addEventListener('error', handleError)
-
-    if (!script.id) {
-      script.id = id
-      script.src = src
-      script.async = async
-      script.defer = defer
+    if (!existingScript) {
+      script.addEventListener('load', handleLoad)
+      script.addEventListener('error', handleError)
       targetParent.appendChild(script)
       createdScript = script
+    } else if (existingScript.src === src) {
+      // Script already exists and matches, check if it's loaded
+      if (existingScript.complete) {
+        setStatus('ready')
+      } else {
+        existingScript.addEventListener('load', handleLoad)
+        existingScript.addEventListener('error', handleError)
+      }
     }
 
-    setStatus('loading')
-
-    if (timeoutMs && timeoutMs > 0) {
-      timeoutId = window.setTimeout(handleError, timeoutMs)
+    if (timeoutMs) {
+      timeoutId = window.setTimeout(() => {
+        setStatus('error')
+      }, timeoutMs)
     }
 
     return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId)
-      }
-
-      script.removeEventListener('load', handleReady)
-      script.removeEventListener('error', handleError)
-
+      if (timeoutId) clearTimeout(timeoutId)
       if (removeOnUnmount && createdScript) {
         createdScript.remove()
       }

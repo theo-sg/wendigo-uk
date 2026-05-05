@@ -10,6 +10,7 @@ export default function SongPageSkeleton() {
             marginBottom: '1rem',
             borderRadius: '4px',
             animation: 'pulse 2s infinite',
+            width: '200px',
           }}
         />
 
@@ -33,6 +34,7 @@ export default function SongPageSkeleton() {
             marginBottom: '2rem',
             borderRadius: '4px',
             animation: 'pulse 2s infinite',
+            width: '300px',
           }}
         />
 
