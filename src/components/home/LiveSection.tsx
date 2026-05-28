@@ -1,21 +1,31 @@
 import ExternalLink from '../common/ExternalLink'
 import { EventStructuredData } from '../common/StructuredData'
-import { LIVE_SHOWS } from '../../constants/liveShows.ts'
-import type { LiveShow } from '../../constants/liveShows.ts'
+import { useBandsintown } from '../../hooks/useBandsintown'
 
 export default function LiveSection() {
+  const { shows: LIVE_SHOWS, loading } = useBandsintown()
+
   return (
     <section id="live" className="section home-anchor-section">
-      {LIVE_SHOWS.map((show: LiveShow) => (
+      {LIVE_SHOWS.map((show) => (
         <EventStructuredData key={`structured-${show.id}`} show={show} />
       ))}
       <div className="page-padding">
         <div className="container padding-top">
           <h2 className="anchor-title section-title-center">live</h2>
           <div className="live-widget-card">
-            <div className="live-grid" role="table" aria-label="upcoming live shows">
-              {LIVE_SHOWS.map((show: LiveShow) => (
-                <div className="live-grid-row" role="row" key={show.id}>
+            {loading ? (
+              <div style={{ padding: '2rem', textAlign: 'center' }}>
+                <p>Loading upcoming shows...</p>
+              </div>
+            ) : LIVE_SHOWS.length === 0 ? (
+              <div style={{ padding: '2rem', textAlign: 'center' }}>
+                <p>no upcoming shows</p>
+              </div>
+            ) : (
+              <div className="live-grid" role="table" aria-label="upcoming live shows">
+                {LIVE_SHOWS.map((show) => (
+                  <div className="live-grid-row" role="row" key={show.id}>
                   <span className="live-col live-date" role="cell">
                     <span className="live-date-day">{show.dayLabel}</span>
                     <span className="live-date-month">{show.monthLabel}</span>
@@ -41,7 +51,8 @@ export default function LiveSection() {
                   </span>
                 </div>
               ))}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
