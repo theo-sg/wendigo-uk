@@ -70,7 +70,7 @@ export default function useExternalScript({
       createdScript = script
     } else if (existingScript.src === src) {
       // Script already exists and matches, check if it's loaded
-      if (existingScript.complete) {
+      if ((existingScript as any).complete) {
         setStatus('ready')
       } else {
         existingScript.addEventListener('load', handleLoad)
