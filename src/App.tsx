@@ -55,11 +55,28 @@ function App() {
           }
         />
         <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/xvi" element={<Navigate to="/songs/xvi" replace />} />
+        <Route
+          path="/songs/xvi"
+          element={
+            <PageShell>
+              <SongPageXVI />
+            </PageShell>
+          }
+        />
         <Route
           path="/music/xvi"
           element={
             <PageShell>
               <SongPageXVI />
+            </PageShell>
+          }
+        />
+        <Route
+          path="/songs/:slug"
+          element={
+            <PageShell includeFooter>
+              <SongPageBySlug />
             </PageShell>
           }
         />
