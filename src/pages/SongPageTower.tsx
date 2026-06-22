@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import xviAudio from '../assets/clips/XVIXVIXVIXVIXVIXVI.wav'
 
-export default function SongPageXVI() {
+export default function SongPageTower() {
   return (
-    <section className="section home-anchor-section music-page-section song-page-section song-page-xvi">
+    <section className="section home-anchor-section music-page-section song-page-section song-page-tower">
       <div className="page-padding">
         <div className="container padding-top">
           <h1>why's it gotta be the sixteenth card?</h1>
