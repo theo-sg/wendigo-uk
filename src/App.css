@@ -610,14 +610,54 @@ body {
   letter-spacing: 0 !important;
 }
 
-.new-song-title-sub {
-  display: block;
-  margin-top: 0.16rem;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-  font-weight: 400;
-  letter-spacing: 0 !important;
+.new-song-presave-link {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.8rem 1.35rem;
+  border: 1px solid #ffffff6b;
+  background: #101010d1;
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
   line-height: 1;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.new-song-presave-link:hover,
+.new-song-presave-link:focus-visible {
+  background: var(--site-hover-accent);
+  color: var(--site-hover-accent-contrast);
+  border-color: var(--site-hover-accent);
+}
+
+.new-song-instagram-wrap {
+  position: relative;
+  z-index: 3;
+  width: min(520px, 90%);
+  flex-shrink: 0;
+  margin-top: 0;
+  border: 1px solid #ffffff2b;
+  background: #101010d1;
+}
+
+.instagram-embed-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  overflow: hidden;
+}
+
+.instagram-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .new-song-embed-wrap {
