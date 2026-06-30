@@ -7,7 +7,6 @@ import { trackPageView } from './utils/analytics'
 
 import './App.css'
 
-const SongPageTower = lazy(() => import('./pages/SongPageTower'))
 const SongPageBySlug = lazy(() => import('./pages/SongPageBySlug'))
 const PressKitPage = lazy(() => import('./pages/PressKitPage'))
 const TechRiderPage = lazy(() => import('./pages/TechRiderPage'))
@@ -55,32 +54,8 @@ function App() {
           }
         />
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="/music/xvi" element={<Navigate to="/songs/tower" replace />} />
-        <Route path="/tower" element={<Navigate to="/songs/tower" replace />} />
-        <Route
-          path="/songs/tower"
-          element={
-            <PageShell>
-              <SongPageTower />
-            </PageShell>
-          }
-        />
-        <Route
-          path="/music/tower"
-          element={
-            <PageShell>
-              <SongPageTower />
-            </PageShell>
-          }
-        />
-        <Route
-          path="/songs/:slug"
-          element={
-            <PageShell includeFooter>
-              <SongPageBySlug />
-            </PageShell>
-          }
-        />
+        <Route path="/music/xvi" element={<Navigate to="/music/tower" replace />} />
+        <Route path="/tower" element={<Navigate to="/music/tower" replace />} />
         <Route
           path="/music/:slug"
           element={

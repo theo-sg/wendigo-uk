@@ -1,8 +1,9 @@
 import towerImage from '../../assets/many hands tower.jpg'
+import towerGif from '../../assets/tower1080pclip-ezgif.com-optimize.gif'
 import SafeIframe from '../common/SafeIframe'
+import { EXTERNAL_LINKS } from '../../constants/links'
 
-const TOWER_PRESAVE_URL = 'https://ffm.to/zok6aym'
-const TOWER_INSTAGRAM_EMBED_URL = 'https://www.instagram.com/p/DZ44boPNHZY/embed'
+const TOWER_SPOTIFY_EMBED = EXTERNAL_LINKS.tracks.tower.spotifyEmbed
 
 export default function NewSongSection() {
   return (
@@ -18,24 +19,25 @@ export default function NewSongSection() {
             />
             <h2 className="new-song-title">
               <span className="new-song-title-main">tower</span>
+              <span className="new-song-title-sub">out now</span>
             </h2>
 
-            <a
-              className="new-song-presave-link"
-              href={TOWER_PRESAVE_URL}
-              rel="noreferrer"
-              target="_blank"
-            >
-              out june 30 - presave here
-            </a>
+            <div className="embed-frame-wrap song-page-spotify-wrap">
+              <SafeIframe
+                className="spotify-embed spotify-embed-compact"
+                src={TOWER_SPOTIFY_EMBED}
+                title="Tower on Spotify"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              />
+            </div>
 
             <div className="embed-frame-wrap new-song-instagram-wrap">
-              <div className="instagram-embed-wrap">
-                <SafeIframe
-                  className="instagram-embed"
-                  src={TOWER_INSTAGRAM_EMBED_URL}
-                  title="Wendigo Tower Instagram post"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              <div className="instagram-embed-wrap tower-preview-wrap">
+                <img
+                  className="tower-preview-gif"
+                  src={towerGif}
+                  alt="Tower preview animation"
+                  loading="lazy"
                 />
               </div>
             </div>

@@ -1,9 +1,10 @@
 import SongCoverCologne from '../assets/coverimage/cologne.jpg'
 import SongCoverKrakensbane from '../assets/coverimage/krakensbane.jpg'
+import SongCoverTower from '../assets/TOWER COVER NOISE 3K.jpg'
 import SongCoverXXII from '../assets/coverimage/xxii.jpg'
 import { EXTERNAL_LINKS } from './links'
 
-export type SongSlug = 'xxii' | 'cologne' | 'krakensbane'
+export type SongSlug = 'xxii' | 'cologne' | 'krakensbane' | 'tower'
 
 type SongVideo = {
   src: string
@@ -159,6 +160,73 @@ now you're sinking
 so fuck what you're thinking, yeah
 when you're staring at the bottom`,
   },
+  tower: {
+    slug: 'tower',
+    title: 'tower',
+    themeClassName: 'song-page-tower',
+    cover: SongCoverTower,
+    spotifyEmbed: EXTERNAL_LINKS.tracks.tower.spotifyEmbed,
+    youtubeEmbeds: [
+      { src: EXTERNAL_LINKS.tracks.tower.youtubeEmbed, title: 'Tower' },
+    ],
+    bandcampEmbed: EXTERNAL_LINKS.tracks.tower.bandcampEmbed,
+    bandcampUrl: EXTERNAL_LINKS.tracks.tower.bandcamp,
+    lyrics: `my baby’s from the forest
+she’s a flower in the snow
+antarctic bloom with her petals and thorns
+
+she’s lunar in her spirit
+and you should see the way she walks 
+towards me orbiting
+i pull her in close
+
+she stares straight up into the sky
+and laughs with liquid gold
+she’s silvered in her gaze 
+and sidereal in her soul
+
+but i am rust i am decay
+and i will tarnish all that’s true
+self sabotage runs in my iron blood
+i’ll drain it all for you
+
+i’m deaf dumb
+baby i’m blind
+i keep telling her to
+run for the hills
+with her black hair
+blue eyes
+i’m still telling her to
+run for the hills
+
+run for the hills
+
+suddenly it struck me like a hammer to the head
+that if this is what living is like then i must have been dead
+i am a corpse under the mud
+been buried here the whole damn time
+but i would go right back below
+just to feel her lips on mine
+
+i’m deaf dumb
+baby i’m blind
+i keep telling her to
+run for the hills
+
+her black hair
+blue eyes
+i’m still telling her to
+run for the hills
+
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?
+why's it gotta be the sixteenth card?`,
+  },
 }
 
-export const HOME_SONG_ORDER: SongSlug[] = ['xxii', 'cologne', 'krakensbane']
+export const HOME_SONG_ORDER: SongSlug[] = ['tower', 'xxii', 'cologne', 'krakensbane']
