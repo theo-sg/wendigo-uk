@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { LiveShow } from '../constants/liveShows'
+import { FALLBACK_LIVE_SHOWS } from '../constants/liveShows'
 
 interface BandsinownEvent {
   id: number
@@ -66,12 +67,12 @@ export function useBandsintown() {
           } as LiveShow
         })
 
-        setShows(parsedShows)
+        setShows(parsedShows.length > 0 ? parsedShows : FALLBACK_LIVE_SHOWS)
         setError(null)
       } catch (err) {
         console.error('Error fetching Bandsintown events:', err)
         setError(err instanceof Error ? err.message : 'An error occurred')
-        setShows([])
+        setShows(FALLBACK_LIVE_SHOWS)
       } finally {
         setLoading(false)
       }

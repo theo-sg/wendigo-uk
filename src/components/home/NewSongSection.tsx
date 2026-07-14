@@ -1,5 +1,4 @@
 import towerImage from '../../assets/many hands tower.jpg'
-import towerGif from '../../assets/tower1080pclip-ezgif.com-optimize.gif'
 import SafeIframe from '../common/SafeIframe'
 import { EXTERNAL_LINKS } from '../../constants/links'
 
@@ -32,12 +31,12 @@ export default function NewSongSection() {
             </div>
 
             <div className="embed-frame-wrap new-song-instagram-wrap">
-              <div className="instagram-embed-wrap tower-preview-wrap">
-                <img
-                  className="tower-preview-gif"
-                  src={towerGif}
-                  alt="Tower preview animation"
-                  loading="lazy"
+              <div className="youtube-embed-wrap tower-preview-wrap">
+                <SafeIframe
+                  className="youtube-embed"
+                  src={EXTERNAL_LINKS.tracks.tower.youtubeEmbed}
+                  title="Tower official music video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 />
               </div>
             </div>

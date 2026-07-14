@@ -37,11 +37,35 @@ export default function LiveSection() {
                   </span>
 
                   <span className="live-col live-lineup" role="cell">
-                    {show.lineup.map((band) => (
-                      <span className="live-band" key={`${show.id}-${band}`}>
-                        {band}
-                      </span>
-                    ))}
+                    {(() => {
+                      const lineup = show.lineup.map((artist) => artist.trim()).filter(Boolean)
+                      const wendigoIndex = lineup.findIndex(
+                        (artist) => artist.toLowerCase() === 'wendigo'
+                      )
+                      const otherActs = lineup.filter(
+                        (artist) => artist.toLowerCase() !== 'wendigo'
+                      )
+
+                      const formatActs = (acts: string[]) => {
+                        if (acts.length === 1) return acts[0]
+                        if (acts.length === 2) return `${acts[0]} alongside ${acts[1]}`
+                        return `${acts.slice(0, -1).join(', ')} alongside ${acts[acts.length - 1]}`
+                      }
+
+                      if (otherActs.length === 0) {
+                        return wendigoIndex === 0
+                          ? 'Wendigo headline show'
+                          : 'Wendigo supporting'
+                      }
+
+                      if (wendigoIndex === 0 || wendigoIndex === -1) {
+                        return `with support from ${formatActs(otherActs)}`
+                      }
+
+                      return `supporting ${otherActs[0]}${
+                        otherActs.length > 1 ? ` alongside ${formatActs(otherActs.slice(1))}` : ''
+                      }`
+                    })()}
                   </span>
 
                   <span className="live-col live-ticket" role="cell">

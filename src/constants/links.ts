@@ -64,7 +64,7 @@ export const EXTERNAL_LINKS = {
     tower: {
       spotify: 'https://open.spotify.com/track/0va0pnV0bgodgZooPiGZBc?si=dcc6d1295c4d41bd',
       spotifyEmbed: 'https://open.spotify.com/embed/track/0va0pnV0bgodgZooPiGZBc?utm_source=generator&theme=0',
-      youtubeEmbed: 'https://www.youtube.com/embed/s7LV9vkZmTs',
+      youtubeEmbed: 'https://www.youtube.com/embed/5Msc-gEr_qg',
       bandcamp: 'https://wendigo-uk.bandcamp.com/track/tower',
       bandcampEmbed:
         'https://bandcamp.com/EmbeddedPlayer/v=2/track=4180785782/size=large/bgcol=0b0b0b/linkcol=ffffff/tracklist=false/artwork=small/',
