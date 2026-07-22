@@ -1,29 +1,122 @@
 import { useEffect, useState } from 'react'
 import type { LiveShow } from '../constants/liveShows'
-import { FALLBACK_LIVE_SHOWS } from '../constants/liveShows'
 
-interface BandsinownEvent {
-  id: number
-  artist_id: number
-  url: string
-  on_sale_datetime: string
-  datetime: string
-  title: string
-  venue: {
-    name: string
-    latitude: number
-    longitude: number
-    city: string
-    region: string
-    country: string
-  }
-  lineup: string[]
-  description: string
-  thumbnail_url: string
+interface BandsintownOffer {
+  type?: string
+  url?: string
+  status?: string
+}
+
+interface BandsintownVenue {
+  name?: string
+  latitude?: number
+  longitude?: number
+  city?: string
+  region?: string
+  country?: string
+  street_address?: string
+  location?: string
+}
+
+interface BandsintownEvent {
+  id: number | string
+  artist_id?: number | string
+  url?: string
+  on_sale_datetime?: string
+  datetime?: string
+  starts_at?: string
+  title?: string
+  venue?: BandsintownVenue
+  lineup?: string[]
+  description?: string
+  thumbnail_url?: string
+  offers?: BandsintownOffer[]
 }
 
 const BANDSINTOWN_API_APP_ID = import.meta.env.VITE_BANDSINTOWN_APP_ID || 'wendigo_artist'
-const ARTIST_NAME = 'wendigo'
+const ARTIST_ID = import.meta.env.VITE_BANDSINTOWN_ARTIST_ID || '15590407'
+
+function formatArtistName(artist: string) {
+  return artist
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+interface EventOverrides {
+  venue?: string
+  headliner?: string
+  lineup?: string[]
+}
+
+const EVENT_OVERRIDES: Record<string, EventOverrides> = {
+  '108656390': {
+    venue: 'Barfly, Camden',
+    headliner: 'Jam Merchants',
+  },
+  '108688201': {
+    venue: 'The Victoria, Dalston',
+    headliner: 'Bella Artois',
+    lineup: ['Bella Artois', 'Jan Echo', 'MOMOTUSKAN', 'wendigo'],
+  },
+}
+
+function getEventOverrides(event: BandsintownEvent): EventOverrides {
+  return EVENT_OVERRIDES[String(event.id)] ?? {}
+}
+
+function toEventDate(event: BandsintownEvent) {
+  const rawDate = event.datetime || event.starts_at || ''
+  return rawDate ? new Date(rawDate) : null
+}
+
+export function parseBandsintownEvents(events: BandsintownEvent[]): LiveShow[] {
+  const now = Date.now()
+
+  return events
+    .map((event) => {
+      const date = toEventDate(event)
+
+      if (!date || Number.isNaN(date.getTime()) || date.getTime() < now) {
+        return null
+      }
+
+      const lineup = (event.lineup ?? [])
+        .map((artist) => artist.trim())
+        .filter(Boolean)
+        .map(formatArtistName)
+
+      const ticketUrl = event.offers?.find((offer) => offer.url)?.url ?? event.url ?? ''
+      const overrides = getEventOverrides(event)
+      const manualVenue = overrides.venue ?? null
+      const manualHeadliner = overrides.headliner ?? null
+      const manualLineup = overrides.lineup?.map((artist) => artist.trim()).filter(Boolean)
+      const resolvedLineup = manualLineup?.length
+        ? manualLineup
+        : manualHeadliner
+          ? [manualHeadliner, ...lineup.filter((artist) => artist !== manualHeadliner)]
+          : lineup
+
+      return {
+        show: {
+          id: `event-${event.id}`,
+          dayLabel: date.getDate().toString().padStart(2, '0'),
+          monthLabel: date.toLocaleString('en-US', { month: 'short' }),
+          yearLabel: date.getFullYear().toString(),
+          venueLabel: manualVenue ?? event.venue?.name ?? 'TBC',
+          cityLabel: event.venue?.city ?? 'TBC',
+          countryLabel: event.venue?.country ?? 'TBC',
+          lineup: resolvedLineup,
+          ticketUrl,
+        } as LiveShow,
+        dateValue: date.getTime(),
+      }
+    })
+    .filter((entry): entry is { show: LiveShow; dateValue: number } => entry !== null)
+    .sort((left, right) => left.dateValue - right.dateValue)
+    .map((entry) => entry.show)
+}
 
 export function useBandsintown() {
   const [shows, setShows] = useState<LiveShow[]>([])
@@ -34,45 +127,23 @@ export function useBandsintown() {
     const fetchShows = async () => {
       try {
         setLoading(true)
-        const response = await fetch(
-          `https://rest.bandsintown.com/artists/${ARTIST_NAME}/events?app_id=${BANDSINTOWN_API_APP_ID}`
+
+        const listResponse = await fetch(
+          `https://rest.bandsintown.com/artists/id_${encodeURIComponent(ARTIST_ID)}/events?app_id=${BANDSINTOWN_API_APP_ID}&date=upcoming`
         )
 
-        if (!response.ok) {
+        if (!listResponse.ok) {
           throw new Error('Failed to fetch events from Bandsintown')
         }
 
-        const data: BandsinownEvent[] = await response.json()
-
-        // Parse Bandsintown events into LiveShow format
-        const parsedShows = data.map((event) => {
-          const date = new Date(event.datetime)
-          const dayLabel = date.getDate().toString().padStart(2, '0')
-          const monthLabel = date.toLocaleString('en-US', { month: 'short' })
-
-          return {
-            id: `event-${event.id}`,
-            dayLabel,
-            monthLabel,
-            venueLabel: event.venue.name,
-            cityLabel: event.venue.city,
-            countryLabel: event.venue.country,
-            lineup: event.lineup.map((artist) =>
-              artist
-                .split(' ')
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ')
-            ),
-            ticketUrl: event.url,
-          } as LiveShow
-        })
-
-        setShows(parsedShows.length > 0 ? parsedShows : FALLBACK_LIVE_SHOWS)
+        const summaryEvents: BandsintownEvent[] = await listResponse.json()
+        const parsedShows = parseBandsintownEvents(summaryEvents)
+        setShows(parsedShows.length > 0 ? parsedShows : [])
         setError(null)
       } catch (err) {
         console.error('Error fetching Bandsintown events:', err)
         setError(err instanceof Error ? err.message : 'An error occurred')
-        setShows(FALLBACK_LIVE_SHOWS)
+        setShows([])
       } finally {
         setLoading(false)
       }

@@ -830,83 +830,120 @@ body {
 }
 
 .live-widget-card {
-  width: min(920px, 100%);
+  width: min(1040px, 100%);
   margin: 0;
-  padding: 0.6rem;
+  padding: 0.75rem;
   border: 1px solid #ffffff26;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #0000005e;
 }
 
 .live-grid {
   display: flex;
   flex-direction: column;
+  gap: 0.7rem;
 }
 
 .live-grid-row {
   display: grid;
-  grid-template-columns: minmax(120px, auto) minmax(220px, 1fr) minmax(220px, 1fr) auto;
-  gap: 0.9rem;
+  grid-template-columns: minmax(96px, 112px) minmax(220px, 1fr) minmax(220px, 1.2fr) auto;
+  gap: 1rem;
   align-items: center;
+  padding: 1rem 0.85rem;
+  border: 1px solid #ffffff14;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.live-grid-row {
-  padding: 0.95rem 0.4rem;
-  border-bottom: 1px solid #ffffff1f;
-}
-
-.live-grid-row:last-child {
-  border-bottom: 0;
+.live-state-block {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #fff;
 }
 
 .live-col {
   color: #fff;
-  font-size: 1.22rem;
-  font-weight: 700;
-  line-height: 1.35;
+  font-size: 1.08rem;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .live-date {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  align-items: center;
-  text-align: center;
+  gap: 0.2rem;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
 }
 
 .live-date-day {
-  line-height: 1;
-  color: #ce0800;
-  font-size: 2rem;
+  line-height: 0.95;
+  color: #ff5050;
+  font-size: 2.5rem;
   font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .live-date-month {
   line-height: 1;
-  color: #ce0800;
-  font-size: 1.1rem;
+  color: #fff;
+  font-size: 1.05rem;
   font-weight: 700;
-  text-transform: lowercase;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.live-date-year {
+  line-height: 1;
+  color: #ffffff80;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
 .live-location {
   display: flex;
   flex-direction: column;
-  gap: 0.12rem;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
 .live-lineup {
   display: flex;
-  flex-direction: column;
-  gap: 0.12rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.live-lineup-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem;
+  min-width: 0;
 }
 
 .live-venue {
-  font-weight: 700;
+  font-size: 1.12rem;
+  font-weight: 400;
+  color: #fff;
 }
 
 .live-city {
-  font-weight: 500;
+  color: #ffffffbf;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.live-headliner {
+  font-weight: 700;
+  color: #fff;
+}
+
+.live-lineup-support {
+  color: #ffffffd1;
+  font-size: 1.02rem;
 }
 
 .live-location,
@@ -922,12 +959,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.35rem;
+  padding: 0.8rem 1.15rem;
   border: 1px solid #fff;
+  border-radius: 0;
   background: #fff;
   color: #000;
-  font-size: 1.24rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   line-height: 1;
   text-decoration: none;
   text-transform: lowercase;
@@ -943,13 +981,43 @@ body {
 
 @media (max-width: 900px) {
   .live-grid-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .live-date {
+    flex-direction: row;
+    align-items: baseline;
     gap: 0.45rem;
   }
 
   .live-ticket {
     justify-self: start;
-    margin-top: 0.25rem;
+    margin-top: 0.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .live-widget-card {
+    padding: 0.6rem;
+  }
+
+  .live-grid-row {
+    padding: 0.85rem 0.7rem;
+  }
+
+  .live-date-day {
+    font-size: 2rem;
+  }
+
+  .live-venue {
+    font-size: 1.05rem;
+  }
+
+  .live-city,
+  .live-lineup-support {
+    font-size: 1rem;
   }
 }
 
