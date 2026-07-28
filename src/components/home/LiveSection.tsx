@@ -55,7 +55,7 @@ export default function LiveSection() {
                         <span className="live-lineup-text">
                           <span className="live-headliner">{headliner}</span>
                           {supportActs.length > 0 ? (
-                            <span className="live-lineup-support">ft {supportActs.join(', ')}</span>
+                            <span className="live-lineup-support">ft. {supportActs.join(', ')}</span>
                           ) : null}
                         </span>
                       </div>

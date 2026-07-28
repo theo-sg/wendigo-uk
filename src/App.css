@@ -910,6 +910,7 @@ body {
   min-width: 0;
 }
 
+
 .live-lineup {
   display: flex;
   align-items: center;
@@ -917,16 +918,16 @@ body {
 }
 
 .live-lineup-text {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
   min-width: 0;
 }
 
 .live-venue {
   font-size: 1.12rem;
-  font-weight: 400;
+  font-weight: 700;
   color: #fff;
 }
 
@@ -943,7 +944,8 @@ body {
 
 .live-lineup-support {
   color: #ffffffd1;
-  font-size: 1.02rem;
+  font-size: 0.98rem;
+  margin-top: 0.06rem;
 }
 
 .live-location,

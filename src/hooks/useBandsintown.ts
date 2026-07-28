@@ -52,13 +52,19 @@ interface EventOverrides {
 
 const EVENT_OVERRIDES: Record<string, EventOverrides> = {
   '108656390': {
-    venue: 'Barfly, Camden',
+    venue: 'barfly, camden',
     headliner: 'Jam Merchants',
+    lineup: ['Jam Merchants', 'wendigo'],
   },
   '108688201': {
-    venue: 'The Victoria, Dalston',
+    venue: 'the victoria, dalston',
     headliner: 'Bella Artois',
     lineup: ['Bella Artois', 'Jan Echo', 'MOMOTUSKAN', 'wendigo'],
+  },
+  '108707746' : {
+    venue: 'new cross inn, new cross',
+    headliner: 'Stepover',
+    lineup: ['Stepover', 'wendigo', 'Goo'],
   },
 }
 
