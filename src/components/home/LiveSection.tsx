@@ -46,11 +46,6 @@ export default function LiveSection() {
                         <span className="live-date-year">{show.yearLabel}</span>
                       </div>
 
-                      <div className="live-col live-location" role="cell">
-                        <span className="live-venue">{show.venueLabel}</span>
-                        <span className="live-city">{show.cityLabel}, {show.countryLabel}</span>
-                      </div>
-
                       <div className="live-col live-lineup" role="cell">
                         <span className="live-lineup-text">
                           <span className="live-headliner">{headliner}</span>
@@ -58,6 +53,11 @@ export default function LiveSection() {
                             <span className="live-lineup-support">ft. {supportActs.join(', ')}</span>
                           ) : null}
                         </span>
+                      </div>
+
+                      <div className="live-col live-location" role="cell">
+                        <span className="live-venue">{show.venueLabel}</span>
+                        <span className="live-city">{show.cityLabel}, {show.countryLabel}</span>
                       </div>
 
                       <div className="live-col live-ticket" role="cell">

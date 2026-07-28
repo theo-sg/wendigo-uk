@@ -846,7 +846,7 @@ body {
 
 .live-grid-row {
   display: grid;
-  grid-template-columns: minmax(96px, 112px) minmax(220px, 1fr) minmax(220px, 1.2fr) auto;
+  grid-template-columns: minmax(96px, 112px) minmax(220px, 1.2fr) minmax(220px, 1fr) auto;
   gap: 1rem;
   align-items: center;
   padding: 1rem 0.85rem;
