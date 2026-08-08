@@ -61,6 +61,11 @@ const EVENT_OVERRIDES: Record<string, EventOverrides> = {
     headliner: 'Bella Artois',
     lineup: ['Bella Artois', 'Jan Echo', 'MOMOTUSKAN', 'wendigo'],
   },
+  '108753160': {
+    venue: 'rossi bar, brighton',
+    headliner: 'Long Suffering Wife',
+    lineup: ['Long Suffering Wife', 'wendigo', 'Grimrite'],
+  },
   '108707746' : {
     venue: 'new cross inn, new cross',
     headliner: 'Stepover',
