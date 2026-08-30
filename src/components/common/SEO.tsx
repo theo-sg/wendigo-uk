@@ -9,9 +9,9 @@ type SEOProps = {
 }
 
 export default function SEO({
-  title = "wendigo",
-  description = "the official wendigo website.",
-  image,
+  title = 'wendigo - official website',
+  description = 'official wendigo website — stream music, view tour dates, and buy merch.',
+  image = '/og-image.png',
   url,
   type = 'website'
 }: SEOProps) {
@@ -26,7 +26,7 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={fullUrl} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={`${siteUrl}${image}`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

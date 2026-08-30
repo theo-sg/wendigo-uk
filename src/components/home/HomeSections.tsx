@@ -10,8 +10,8 @@ export default function HomeSections() {
   return (
     <>
       <SEO
-        title="Wendigo - Official Website"
-        description="Discover Wendigo, the alternative rock band. Stream new music, watch videos, check live shows, and explore the latest news."
+        title="wendigo - official website"
+        description="official wendigo website — stream music, view tour dates, and buy merch."
         url="/"
       />
       <div className="home-main-sections">

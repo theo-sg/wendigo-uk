@@ -5,7 +5,7 @@ export default function IntroSection() {
     <section className="section home-intro-section">
       <div className="page-padding">
         <div className="container padding-top">
-          <div className="main-content" style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="main-content">
             <h4>three piece di-gaze band from london, uk.</h4>
           </div>
           <MailerLiteHtmlForm />

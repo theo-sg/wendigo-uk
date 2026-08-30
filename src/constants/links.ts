@@ -25,16 +25,7 @@ export const EXTERNAL_LINKS = {
     voxwaveImage:
       'https://voxwavemag.com/wp-content/uploads/2026/03/captura-de-pantalla-2026-03-04-171343.png',
   },
-  assets: {
-    footerGradient:
-      'https://cdn.prod.website-files.com/69af50cc240e92e5025e7aa3/69af50cf240e92e5025e7b0e_Footer_Gradient_Bg.webp',
-    footerGradient500:
-      'https://cdn.prod.website-files.com/69af50cc240e92e5025e7aa3/69af50cf240e92e5025e7b0e_Footer_Gradient_Bg-p-500.webp',
-    footerGradient800:
-      'https://cdn.prod.website-files.com/69af50cc240e92e5025e7aa3/69af50cf240e92e5025e7b0e_Footer_Gradient_Bg-p-800.webp',
-    footerGradient1080:
-      'https://cdn.prod.website-files.com/69af50cc240e92e5025e7aa3/69af50cf240e92e5025e7b0e_Footer_Gradient_Bg-p-1080.webp',
-  },
+  assets: {},
   tracks: {
     xxii: {
       spotify: 'https://open.spotify.com/track/6ZFQFPBkSi6qdJTUIaqan0?si=e3aa641b51df4607',

@@ -1,4 +1,4 @@
-import towerImage from '../../assets/many hands tower.jpg'
+import moonImage from '../../assets/heroimage/moon.jpg'
 import SafeIframe from '../common/SafeIframe'
 import { EXTERNAL_LINKS } from '../../constants/links'
 
@@ -14,7 +14,7 @@ export default function NewSongSection() {
               alt="Wendigo Tower promo artwork."
               className="new-song-photo"
               loading="lazy"
-              src={towerImage}
+              src={moonImage}
             />
             <h2 className="new-song-title">
               <span className="new-song-title-main">tower</span>

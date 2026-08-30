@@ -1,10 +1,10 @@
 import SongCoverCologne from '../assets/coverimage/cologne.jpg'
 import SongCoverKrakensbane from '../assets/coverimage/krakensbane.jpg'
-import SongCoverTower from '../assets/TOWER COVER NOISE 3K.jpg'
+import SongCoverTower from '../assets/coverimage/tower.jpg'
 import SongCoverXXII from '../assets/coverimage/xxii.jpg'
 import { EXTERNAL_LINKS } from './links'
 
-export type SongSlug = 'xxii' | 'cologne' | 'krakensbane' | 'tower'
+export type SongSlug = 'xxii' | 'cologne' | 'krakensbane' | 'tower' | 'crescent-moon' | 'all-seeing-eye'
 
 type SongVideo = {
   src: string
@@ -16,11 +16,12 @@ export type SongPageData = {
   title: string
   themeClassName: string
   cover: string
-  spotifyEmbed: string
-  youtubeEmbeds: SongVideo[]
-  bandcampEmbed: string
-  bandcampUrl: string
-  lyrics: string
+  spotifyEmbed?: string
+  youtubeEmbeds?: SongVideo[]
+  bandcampEmbed?: string
+  bandcampUrl?: string
+  lyrics?: string
+  hidden?: boolean
 }
 
 export const SONGS: Record<SongSlug, SongPageData> = {
@@ -47,6 +48,7 @@ it was worth it, right? right?
 learn to hate it like a father hates his son
 golden boy who can do no wrong`,
   },
+
   cologne: {
     slug: 'cologne',
     title: 'cologne',
@@ -103,6 +105,7 @@ i don't wanna do it alone
 yeah
 we won't make it out of cologne`,
   },
+
   krakensbane: {
     slug: 'krakensbane',
     title: 'krakensbane',
@@ -160,6 +163,7 @@ now you're sinking
 so fuck what you're thinking, yeah
 when you're staring at the bottom`,
   },
+
   tower: {
     slug: 'tower',
     title: 'tower',
@@ -227,6 +231,41 @@ why's it gotta be the sixteenth card?
 why's it gotta be the sixteenth card?
 why's it gotta be the sixteenth card?`,
   },
+
+  'crescent-moon': {
+    slug: 'crescent-moon',
+    title: 'crescent moon',
+    themeClassName: 'song-page-crescent-moon',
+    cover: SongCoverTower,
+    hidden: true,
+  },
+  'all-seeing-eye': {
+    slug: 'all-seeing-eye',
+    title: 'all seeing eye',
+    themeClassName: 'song-page-all-seeing-eye',
+    cover: SongCoverTower,
+    hidden: true,
+  },
 }
 
 export const HOME_SONG_ORDER: SongSlug[] = ['tower', 'xxii', 'cologne', 'krakensbane']
+export const HIDDEN_SONG_ORDER: SongSlug[] = ['crescent-moon', 'all-seeing-eye']
+
+export function getSongBySlug(slug: string): SongPageData | undefined {
+  if (!slug) {
+    return undefined
+  }
+
+  const directMatch = SONGS[slug as SongSlug]
+  if (directMatch) {
+    return directMatch
+  }
+
+  return {
+    slug: slug as SongSlug,
+    title: slug.replace(/-/g, ' '),
+    themeClassName: 'song-page-xxii',
+    cover: SongCoverXXII,
+    hidden: true,
+  }
+}

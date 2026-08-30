@@ -5,12 +5,10 @@ export default function FooterSection() {
   return (
     <section className="section-footer">
       <div className="page-padding">
-        <div className="w-layout-blockcontainer container padding-top w-container">
-          <img alt="Gradient background transitioning from dark black to bright orange." className="footer-bg-image" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" src={EXTERNAL_LINKS.assets.footerGradient} srcSet={`${EXTERNAL_LINKS.assets.footerGradient500} 500w, ${EXTERNAL_LINKS.assets.footerGradient800} 800w, ${EXTERNAL_LINKS.assets.footerGradient1080} 1080w, ${EXTERNAL_LINKS.assets.footerGradient} 1440w`} />
-          <div className="footer-top-wrap" data-w-id="b06371d0-3293-ab85-eaf4-4113da9d0b5b">
+        <div className="container padding-top">
+          <div className="footer-top-wrap">
             <div className="phone-wrap">
               <a className="body-text-4" href={EXTERNAL_LINKS.email.management}>mgmt@wendigo.uk</a>
-              <div className="line"></div>
             </div>
             <div className="social-icon-wrap">
               <ExternalLink className="social-link" href={EXTERNAL_LINKS.socials.spotify} target="_blank">
