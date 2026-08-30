@@ -42,8 +42,10 @@ export default function LiveSection() {
                     <div className="live-grid-row" role="row" key={show.id}>
                       <div className="live-col live-date" role="cell">
                         <span className="live-date-day">{show.dayLabel}</span>
-                        <span className="live-date-month">{show.monthLabel}</span>
-                        <span className="live-date-year">{show.yearLabel}</span>
+                        <span className="live-date-meta">
+                          <span className="live-date-month">{show.monthLabel}</span>
+                          <span className="live-date-year">{show.yearLabel}</span>
+                        </span>
                       </div>
 
                       <div className="live-col live-lineup" role="cell">
