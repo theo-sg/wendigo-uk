@@ -44,13 +44,14 @@ function formatArtistName(artist: string) {
     .join(' ')
 }
 
-interface EventOverrides {
+export interface EventOverrides {
   venue?: string
   headliner?: string
   lineup?: string[]
+  hidden?: boolean
 }
 
-const EVENT_OVERRIDES: Record<string, EventOverrides> = {
+export const EVENT_OVERRIDES: Record<string, EventOverrides> = {
   '108656390': {
     venue: 'barfly, camden',
     headliner: 'Jam Merchants',
@@ -70,6 +71,7 @@ const EVENT_OVERRIDES: Record<string, EventOverrides> = {
     venue: 'nambucca, london',
     headliner: 'Shy',
     lineup: ['Shy', 'wendigo'],
+    hidden: true,
   },
   '108707746': {
     venue: 'new cross inn, new cross',
@@ -91,6 +93,10 @@ export function parseBandsintownEvents(events: BandsintownEvent[]): LiveShow[] {
   const now = Date.now()
 
   return events
+    .filter((event) => {
+      const overrides = getEventOverrides(event)
+      return !overrides.hidden
+    })
     .map((event) => {
       const date = toEventDate(event)
 
