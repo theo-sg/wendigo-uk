@@ -1,7 +1,6 @@
 import ExternalLink from '../common/ExternalLink'
 import { EXTERNAL_LINKS } from '../../constants/links'
-import fateTShirtImage from '../../assets/merchimage/fate-t-shirt.jpg'
-import fateTShirtDetailImage from '../../assets/merchimage/fate-t-shirt-detail.jpg'
+import fateTShirtImage from '../../assets/merchimage/fate-t-shirt-detail.jpg'
 
 export default function MerchSection() {
   return (
@@ -18,8 +17,7 @@ export default function MerchSection() {
               target="_blank"
               aria-label="View FATE T-Shirt on Bandcamp"
             >
-              <img src={fateTShirtDetailImage} alt="FATE T-Shirt detail" loading="lazy" />
-              <img src={fateTShirtImage} alt="FATE T-Shirt front" loading="lazy" />
+              <img src={fateTShirtImage} alt="FATE T-Shirt" loading="lazy" />
             </ExternalLink>
             <div className="merch-product-info">
               <h3>"FATE" T-Shirt</h3>
