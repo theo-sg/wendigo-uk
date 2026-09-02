@@ -10,6 +10,9 @@ export const EXTERNAL_LINKS = {
     bandcamp: 'https://wendigo-uk.bandcamp.com',
     bandsintown: 'https://www.bandsintown.com/a/15590407',
   },
+  merch: {
+    fateTShirt: 'https://wendigo-uk.bandcamp.com/merch/fate-t-shirt',
+  },
   embeds: {
     bandsintownWidgetScript: 'https://widgetv3.bandsintown.com/main.min.js',
     instagramPost:

@@ -129,6 +129,82 @@ a:hover {
   text-transform: lowercase;
 }
 
+.merch-product-card {
+  width: min(680px, 100%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #111;
+}
+
+.merch-product-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.merch-product-images img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: opacity 180ms ease;
+}
+
+.merch-product-images:hover img,
+.merch-product-images:focus-visible img {
+  opacity: 0.72;
+}
+
+.merch-product-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem 1.5rem;
+}
+
+.merch-product-info h3 {
+  margin: 0;
+}
+
+.merch-product-info h3 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.merch-product-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-width: 12rem;
+  padding: 0.7rem 1.15rem 0.75rem;
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.merch-product-button span:last-child {
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.merch-product-button:hover,
+.merch-product-button:focus-visible {
+  color: var(--site-hover-accent-contrast);
+  background: var(--site-hover-accent);
+  border-color: var(--site-hover-accent);
+}
+
+.merch-product-info a {
+  flex: 0 0 auto;
+}
+
 .section-title-center {
   text-align: center;
 }
@@ -1104,6 +1180,11 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+  .merch-product-info {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .hero_main {
     min-height: 340px;
   }
