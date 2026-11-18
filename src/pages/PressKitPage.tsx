@@ -12,13 +12,13 @@ import ExternalLink from '../components/common/ExternalLink'
 import SEO from '../components/common/SEO'
 import { SHOW_HISTORY } from '../constants/liveShows'
 
-import PressKitMainImage from '../assets/liveimage/_DSF9775-press.jpg'
+import PressKitMainImage from '../assets/pressphotos/_DSF9775.jpg'
 
 export default function PressKitPage() {
   return (
     <>
       <SEO
-        title="Press Kit - Wendigo"
+        title="press kit"
         description="Official press kit for Wendigo, alternative rock band from London. Includes bio, photos, videos, and contact information for press inquiries."
         image={PressKitMainImage}
         url="/press"

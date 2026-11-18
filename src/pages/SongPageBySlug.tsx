@@ -25,7 +25,7 @@ export default function SongPageBySlug() {
   return (
     <>
       <SEO
-        title={`${song.title} - Wendigo`}
+        title={`${song.title} - wendigo`}
         description={hasLyrics ? `Listen to ${song.title} by Wendigo. Stream on Spotify, watch the official video, and read lyrics.` : `View the ${song.title} page by Wendigo. Details and media will be added soon.`}
         image={song.cover}
         url={`/music/${slug}`}

@@ -11,6 +11,7 @@ const SongPageBySlug = lazy(() => import('./pages/SongPageBySlug'))
 const PressKitPage = lazy(() => import('./pages/PressKitPage'))
 const TechRiderPage = lazy(() => import('./pages/TechRiderPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const FatePressPage = lazy(() => import('./pages/FatePressPage'))
 
 function App() {
   const location = useLocation()
@@ -69,6 +70,14 @@ function App() {
           element={
             <PageShell includeHero includeFooter>
               <PressKitPage />
+            </PageShell>
+          }
+        />
+        <Route
+          path="/press/fate"
+          element={
+            <PageShell includeHero includeFooter>
+              <FatePressPage />
             </PageShell>
           }
         />

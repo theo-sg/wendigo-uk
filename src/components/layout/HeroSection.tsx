@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react'
-import heroImage from '../../assets/heroimage/_DSF9736.jpg'
+import heroImage from '../../assets/pressphotos/_DSF9736.jpg'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo/logo.svg'
 import { NAV_ITEMS, type NavItem } from '../../constants/navigation'

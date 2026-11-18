@@ -714,10 +714,15 @@ a:hover {
   border-color: var(--site-hover-accent);
 }
 
+.press-kit-page-section .anchor-title {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
 .press-kit-page-section .container.padding-top {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3.2vw, 2.5rem);
+  gap: clamp(2rem, 4vw, 3.25rem);
   align-items: stretch;
   text-align: left;
   padding-top: clamp(4rem, 8vw, 7rem);
@@ -1113,6 +1118,160 @@ a:hover {
   margin-top: 0.8rem;
   color: #fff;
   text-decoration: underline;
+}
+
+.fate-press-page .container.padding-top {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3.25rem);
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.fate-press-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.fate-press-release,
+.fate-tracklist {
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.fate-press-release .press-kit-copy {
+  width: 100%;
+}
+
+.fate-press-artwork {
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.fate-tracklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fate-tracklist ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.fate-tracklist li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.fate-tracklist li span {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.fate-tracklist li b {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: 0.06em;
+}
+
+.fate-tracklist li em {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  font-style: normal;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.fate-track-player {
+  grid-column: 2;
+  width: 100%;
+  height: 54px;
+  margin: 0;
+  border: 0;
+  display: block;
+}
+
+.fate-press-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fate-press-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.fate-press-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+  text-transform: lowercase;
+}
+
+.fate-press-links a:hover,
+.fate-press-links a:focus-visible {
+  border-color: var(--site-hover-accent);
+  background: var(--site-hover-accent);
+  color: var(--site-hover-accent-contrast);
+}
+
+.fate-press-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fate-press-photos {
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.fate-press-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fate-press-photo-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .fate-tracklist li {
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+  }
+
+  .fate-tracklist li em {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .fate-press-links {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .fate-press-links a {
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {

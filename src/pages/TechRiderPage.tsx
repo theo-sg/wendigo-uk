@@ -4,7 +4,7 @@ export default function TechRiderPage() {
   return (
     <>
       <SEO
-        title="Tech Rider - Wendigo"
+        title="tech rider"
         description="Technical specifications and requirements for Wendigo live performances. Download the complete tech rider PDF."
         url="/tech-rider"
       />

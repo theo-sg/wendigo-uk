@@ -5,7 +5,7 @@ export default function NotFoundPage() {
   return (
     <>
       <SEO
-        title="Page Not Found - Wendigo"
+        title="404"
         description="The page you're looking for doesn't exist."
         url="/404"
       />
