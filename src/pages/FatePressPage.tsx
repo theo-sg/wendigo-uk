@@ -1,8 +1,8 @@
 import FateCover from '../assets/coverimage/fate.png'
-import CrescentMoonAudio from '../assets/music/WDG_CrescentMoon_Master_44.1k24bit.wav'
-import TowerAudio from '../assets/music/WDG_Tower_Master_44.1k24bit.wav'
-import XXIIAudio from '../assets/music/WDG_XXII_Master_44.1k24bit.wav'
-import AllSeeingEyeAudio from '../assets/music/WDG_AllSeeingEye_Master_44.1k24bit.wav'
+import CrescentMoonAudio from '../assets/music/WDG_CrescentMoon_Master_44.1k24bit.mp3'
+import TowerAudio from '../assets/music/WDG_Tower_Master_44.1k24bit.mp3'
+import XXIIAudio from '../assets/music/WDG_XXII_Master_44.1k24bit.mp3'
+import AllSeeingEyeAudio from '../assets/music/WDG_AllSeeingEye_Master_44.1k24bit.mp3'
 import SEO from '../components/common/SEO'
 
 const pressPhotoModules = import.meta.glob('../assets/pressphotos/*.jpg', {
