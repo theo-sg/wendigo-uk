@@ -1,18 +1,18 @@
 import PressKitLiveImage1 from '../assets/liveimage/DSC05223.jpg'
 import PressKitLiveImage2 from '../assets/liveimage/DSC05485.jpg'
 import PressKitLiveImage3 from '../assets/liveimage/DSC05537.jpg'
-import PressKitLiveImage4 from '../assets/liveimage/DSC_0207 (1).jpg'
-import PressKitLiveImage5 from '../assets/liveimage/___DSC02367.jpg'
-import PressKitLiveImage6 from '../assets/liveimage/___DSC02470.jpg'
-import PressKitGalleryImage1 from '../assets/heroimage/_DSF0113.jpg'
-import PressKitGalleryImage2 from '../assets/heroimage/_DSF9736.jpg'
-import PressKitGalleryImage3 from '../assets/heroimage/_DSF9786.jpg'
+import PressKitLiveImage4 from '../assets/liveimage/DSC_0207 (1)-press.jpg'
+import PressKitLiveImage5 from '../assets/liveimage/___DSC02367-press.jpg'
+import PressKitLiveImage6 from '../assets/liveimage/___DSC02470-press.jpg'
+import PressKitGalleryImage1 from '../assets/heroimage/_DSF0113-gallery.jpg'
+import PressKitGalleryImage2 from '../assets/heroimage/_DSF9736-gallery.jpg'
+import PressKitGalleryImage3 from '../assets/heroimage/_DSF9786-gallery.jpg'
 import { EXTERNAL_LINKS } from '../constants/links'
 import ExternalLink from '../components/common/ExternalLink'
 import SEO from '../components/common/SEO'
 import { SHOW_HISTORY } from '../constants/liveShows'
 
-import PressKitMainImage from '../assets/liveimage/_DSF9775.jpg'
+import PressKitMainImage from '../assets/liveimage/_DSF9775-press.jpg'
 
 export default function PressKitPage() {
   return (
