@@ -1,8 +1,9 @@
-import moonImage from '../../assets/heroimage/moon.jpg'
-import SafeIframe from '../common/SafeIframe'
-import { EXTERNAL_LINKS } from '../../constants/links'
+import fateLogo from '../../assets/release/fate-logo.png'
+import fateCoverBackground from '../../assets/release/fate-cover-background.jpg'
+import fatePreviewGif from '../../assets/release/fate-preview.gif'
+import ExternalLink from '../common/ExternalLink'
 
-const TOWER_SPOTIFY_EMBED = EXTERNAL_LINKS.tracks.tower.spotifyEmbed
+const PRESAVE_URL = 'https://distrokid.com/hyperfollow/wendigo13/fate?ref=release'
 
 export default function NewSongSection() {
   return (
@@ -10,35 +11,35 @@ export default function NewSongSection() {
       <div className="page-padding">
         <div className="container padding-top">
           <div className="new-song-visual">
-            <img
-              alt="Wendigo Tower promo artwork."
-              className="new-song-photo"
-              loading="lazy"
-              src={moonImage}
-            />
-            <h2 className="new-song-title">
-              <span className="new-song-title-main">tower</span>
-              <span className="new-song-title-sub">out now</span>
-            </h2>
-
-            <div className="embed-frame-wrap song-page-spotify-wrap">
-              <SafeIframe
-                className="spotify-embed spotify-embed-compact"
-                src={TOWER_SPOTIFY_EMBED}
-                title="Tower on Spotify"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            <div className="new-song-header">
+              <img
+                alt="Wendigo FATE EP"
+                className="new-song-logo"
+                loading="eager"
+                src={fateLogo}
               />
+              <p><b>our debut EP, out november twenty sixth.</b></p>
             </div>
 
-            <div className="embed-frame-wrap new-song-instagram-wrap">
-              <div className="youtube-embed-wrap tower-preview-wrap">
-                <SafeIframe
-                  className="youtube-embed"
-                  src={EXTERNAL_LINKS.tracks.tower.youtubeEmbed}
-                  title="Tower official music video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                />
-              </div>
+            <div
+              className="new-song-cover"
+              style={{ backgroundImage: `url(${fateCoverBackground})` }}
+            >
+              <img
+                alt="FATE EP preview"
+                className="new-song-gif"
+                loading="eager"
+                src={fatePreviewGif}
+              />
+
+              <ExternalLink
+                className="merch-product-button new-song-presave"
+                href={PRESAVE_URL}
+                target="_blank"
+                aria-label="Presave FATE on your preferred music platform"
+              >
+                presave now
+              </ExternalLink>
             </div>
           </div>
         </div>

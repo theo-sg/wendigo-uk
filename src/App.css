@@ -430,50 +430,60 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 2.4vw, 1.6rem);
-  min-height: clamp(760px, 78vw, 1120px);
-  padding: clamp(1.35rem, 3.2vw, 2.1rem) 0;
-  overflow: hidden;
-  background: #090909;
-}
-
-.new-song-photo {
-  position: absolute;
-  inset: 0;
+  justify-content: flex-start;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
-  filter: saturate(0.92) contrast(1.03);
+  min-height: 0;
+  padding: clamp(2rem, 8vw, 3.5rem) 0;
+  overflow: hidden;
 }
 
-.new-song-title {
+.new-song-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: clamp(0.35rem, 1vw, 0.65rem);
+}
+
+.new-song-header .hero-nav-link {
+  margin: 0;
+  pointer-events: none;
+}
+
+.new-song-header .hero-nav-link:hover,
+.new-song-header .hero-nav-link:focus-visible {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.new-song-logo {
   position: relative;
   z-index: 2;
-  width: min(92%, 920px);
-  margin: 0;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 0.92;
-  text-align: center;
+  width: 82%;
+  max-height: 180px;
+  object-fit: contain;
 }
 
-.new-song-title-main {
-  display: block;
-  font-family: amador, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(3.8rem, 15vw, 8.5rem);
-  line-height: 0.84;
+.new-song-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  background-position: center;
+  background-size: cover;
 }
 
-.new-song-title-sub {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
+.new-song-gif {
+  width: min(300px, 82%);
+}
+
+.new-song-presave {
+  width: min(240px, 72%);
 }
 
 .embed-frame-wrap {
@@ -707,15 +717,22 @@ a:hover {
 .press-kit-page-section .container.padding-top {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.25rem, 2.8vw, 2rem);
+  gap: clamp(1.75rem, 3.2vw, 2.5rem);
   align-items: stretch;
   text-align: left;
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
 }
 
 .press-kit-header {
   width: min(980px, 100%);
   margin: 0 auto;
   text-align: center;
+}
+
+.press-kit-header,
+.press-kit-show-history h2 {
+  margin-bottom: clamp(0.35rem, 1vw, 0.75rem);
 }
 
 .press-kit-copy {
@@ -762,6 +779,22 @@ a:hover {
 
 .press-kit-gallery-image {
   aspect-ratio: 4 / 3;
+}
+
+.press-kit-show-history {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.95rem, 2.5vw, 1.35rem);
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.press-kit-live-history-card {
+  width: 100%;
+}
+
+.press-kit-history-row {
+  grid-template-columns: minmax(150px, 170px) minmax(220px, 1.2fr) minmax(220px, 1fr);
 }
 
 .news-section .container.padding-top {
@@ -1149,25 +1182,23 @@ a:hover {
   }
 
   .new-song-visual {
-    min-height: clamp(760px, 198vw, 1240px);
+    padding: clamp(2rem, 8vw, 3.5rem) 0;
   }
 
-  .new-song-photo {
-    object-position: center 30%;
+  .new-song-logo {
+    width: 82%;
   }
 
-  .new-song-title {
-    width: min(94%, 680px);
+  .new-song-cover {
+    width: 100%;
   }
 
-  .new-song-title-main {
-    font-size: clamp(2.4rem, 13vw, 4.9rem);
+  .new-song-gif {
+    width: min(300px, 82%);
   }
 
-  .new-song-title-sub {
-    font-size: clamp(6rem, 12vw, 10rem);
-    line-height: 0.92;
-    letter-spacing: 0.06em;
+  .new-song-presave {
+    width: min(240px, 72%);
   }
 
   .news-instagram-embed {
@@ -1234,4 +1265,16 @@ a:hover {
   .press-kit-gallery {
     grid-template-columns: 1fr;
   }
+}
+
+.press-kit-live-gallery-continuation {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.8vw, 2rem);
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.press-kit-live-gallery-continuation .press-kit-live-strip {
+  width: 100%;
 }
