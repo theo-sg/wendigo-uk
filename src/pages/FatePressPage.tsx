@@ -47,10 +47,12 @@ export default function FatePressPage() {
               <p className="press-kit-copy">
                 <b>FATE</b> is London-based three-piece alternative rock band <b>wendigo</b>'s debut EP. The four-track record was recorded in Birmingham in January, showcasing the band's self-described <b>“di-gaze”</b> sound, which blends the raw energy of grunge and alternative rock, 
                 the expansive textures of shoegaze, and a modern approach to production brought to life with <a href="https://zigproductionhouse.com/">ZIG PRODUCTION HOUSE</a>. 
+                
+                <br /><br />
                 <b>wendigo</b> began as a solo project by songwriter <b>Theo Stewart Griffiths</b>, later joined by bassist <b>Toby Hawkings</b> and drummer <b>Rhys Caswell</b> and forming a full band, 
                 gaining some traction with shows in London, Brighton and Birmingham over 2025/2026. 
-              </p>
-              <p className="press-kit-copy">
+
+                <br /><br />
                 The EP is a collection of four songs, with themes of indifference, frustration, and the collision of the digital and natural world that is all around us in 2026. Unlike the Gen X grunge movement that heavily inspired the band, 
                 <b>wendigo</b> speaks to the Gen Z zeitgeist - capturing creeping paranoia, frustration with a world that feels indifferent, and using apathy as a coping mechanism.
 
